@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>YourEkko – Connect with Loved Ones</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'primary-blue': '#2f3e9e',
+            'primary-pink': '#d88ca4',
+            'primary-green': '#00bba0',
+          },
+          fontFamily: {
+            'inter': ['Inter', 'sans-serif'],
+          },
+          animation: {
+            'fade-in': 'fadeIn 0.6s ease-in-out',
+            'slide-up': 'slideUp 0.8s ease-out',
+            'bounce-subtle': 'bounceSubtle 2s infinite',
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes slideUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes bounceSubtle {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+    .gradient-bg {
+      background: linear-gradient(135deg, #2f3e9e 0%, #00bba0 100%);
+    }
+    .gradient-text {
+      background: linear-gradient(135deg, #2f3e9e 0%, #00bba0 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .glass-effect {
+      backdrop-filter: blur(10px);
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    .hover-lift {
+      transition: all 0.3s ease;
+    }
+    .hover-lift:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    }
+  </style>
+</head>
+<body class="font-inter bg-gray-50">
+
+  <!-- Header -->
+  <header class="fixed top-0 w-full z-50 glass-effect">
+    <div class="max-w-7xl mx-auto px-6 py-4">
+      <div class="flex items-center justify-between">
+        <div class="text-2xl font-bold gradient-text">YourEkko</div>
+        <nav class="hidden md:flex items-center space-x-8">
+          <a href="#" class="text-gray-700 hover:text-primary-blue transition-colors font-medium">Home</a>
+          <a href="#" class="text-gray-700 hover:text-primary-blue transition-colors font-medium">About Us</a>
+          <a href="#" class="text-gray-700 hover:text-primary-blue transition-colors font-medium">Our Plans</a>
+          <a href="#" class="text-gray-700 hover:text-primary-blue transition-colors font-medium">Help</a>
+        </nav>
+        <button class="bg-primary-blue text-white px-6 py-2 rounded-full hover:bg-opacity-90 transition-all font-medium hover-lift">
+          Start Now
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="pt-24 pb-16 overflow-hidden">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="grid lg:grid-cols-2 gap-12 items-center">
+        <div class="animate-fade-in">
+          <h1 class="text-5xl lg:text-6xl font-bold text-gray-900 mb-6 leading-tight">
+            Connect with 
+            <span class="gradient-text">loved ones</span>, 
+            even from afar
+          </h1>
+          <p class="text-xl text-gray-600 mb-8 leading-relaxed">
+            YourEkko empowers you to send heartfelt messages that transcend time and space. Create lasting connections with your loved ones, ensuring your love is felt, no matter where you are.
+          </p>
+          <div class="flex flex-col sm:flex-row gap-4">
+            <button class="gradient-bg text-white px-8 py-4 rounded-full text-lg font-semibold hover:opacity-90 transition-all hover-lift">
+              Start Your Journey
+            </button>
+            <button class="border-2 border-primary-blue text-primary-blue px-8 py-4 rounded-full text-lg font-semibold hover:bg-primary-blue hover:text-white transition-all">
+              View Plans
+            </button>
+          </div>
+        </div>
+        <div class="animate-slide-up">
+          <div class="relative">
+            <div class="absolute -inset-4 gradient-bg rounded-3xl opacity-20 blur-2xl"></div>
+            <img src='/home.jpeg' alt="Hero illustration" class="relative w-full rounded-3xl shadow-2xl hover-lift">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Discover Section -->
+  <section class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="grid lg:grid-cols-2 gap-12 items-center">
+        <div class="order-2 lg:order-1">
+          <div class="relative">
+            <div class="absolute -inset-4 bg-primary-pink rounded-3xl opacity-20 blur-2xl"></div>
+            <img src='/discover.jpeg' alt="Platform demo" class="relative w-full rounded-3xl shadow-2xl hover-lift">
+          </div>
+        </div>
+        <div class="order-1 lg:order-2">
+          <h2 class="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
+            Discover the Heart of 
+            <span class="text-primary-pink">YourEkko</span>
+          </h2>
+          <p class="text-lg text-gray-600 mb-8 leading-relaxed">
+            YourEkko is a unique platform that allows you to create and schedule heartfelt messages for your loved ones, ensuring your words of care and support transcend time. With our intuitive interface, you can craft meaningful Ekko messages that deliver exactly when and how you need them.
+          </p>
+          <div class="flex flex-col sm:flex-row gap-4">
+            <button class="bg-primary-pink text-white px-8 py-3 rounded-full font-semibold hover:opacity-90 transition-all hover-lift">
+              Learn More
+            </button>
+            <button class="text-primary-pink border-2 border-primary-pink px-8 py-3 rounded-full font-semibold hover:bg-primary-pink hover:text-white transition-all">
+              Watch Demo
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Works -->
+  <section class="py-20 bg-gradient-to-br from-gray-50 to-blue-50">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
+          How does this <span class="text-primary-green">work</span>?
+        </h2>
+        <p class="text-xl text-gray-600">Simple steps to connect hearts across time and space</p>
+      </div>
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="text-center group">
+          <div class="relative mb-6">
+            <div class="absolute -inset-2 bg-primary-green rounded-2xl opacity-20 blur-xl group-hover:opacity-30 transition-opacity"></div>
+            <img src='/icon1.jpeg' alt="Connect icon" class="relative w-48 h-48 mx-auto rounded-2xl shadow-lg hover-lift">
+          </div>
+          <h3 class="text-xl font-bold text-gray-900 mb-3">Easily connect with loved ones</h3>
+          <p class="text-gray-600">through meaningful push-notifications that bring you closer</p>
+        </div>
+        <div class="text-center group">
+          <div class="relative mb-6">
+            <div class="absolute -inset-2 bg-primary-blue rounded-2xl opacity-20 blur-xl group-hover:opacity-30 transition-opacity"></div>
+            <img src='/icon2.jpeg' alt="Step icon" class="relative w-48 h-48 mx-auto rounded-2xl shadow-lg hover-lift">
+          </div>
+          <h3 class="text-xl font-bold text-gray-900 mb-3">Step-by-step guidance</h3>
+          <p class="text-gray-600">to create your personalized Ekko messages with ease</p>
+        </div>
+        <div class="text-center group">
+          <div class="relative mb-6">
+            <div class="absolute -inset-2 bg-primary-pink rounded-2xl opacity-20 blur-xl group-hover:opacity-30 transition-opacity"></div>
+            <img src='/icon3.jpeg' alt="Schedule icon" class="relative w-48 h-48 mx-auto rounded-2xl shadow-lg hover-lift">
+          </div>
+          <h3 class="text-xl font-bold text-gray-900 mb-3">Easily schedule your messages</h3>
+          <p class="text-gray-600">for future delivery to your loved ones at the perfect moment</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing -->
+  <section class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
+          <span class="gradient-text">Pricing</span> Options
+        </h2>
+        <p class="text-xl text-gray-600">Choose the perfect plan for your heartfelt messages</p>
+      </div>
+      <div class="grid md:grid-cols-3 gap-8">
+        <!-- Basic Plan -->
+        <div class="bg-white rounded-3xl shadow-xl p-8 border-2 border-gray-100 hover-lift">
+          <div class="text-center mb-8">
+            <h3 class="text-2xl font-bold text-gray-900 mb-2">Basic Plan</h3>
+            <div class="text-4xl font-bold text-primary-blue mb-2">$180<span class="text-lg text-gray-500">/yr</span></div>
+          </div>
+          <ul class="space-y-4 mb-8">
+            <li class="flex items-center text-gray-600">
+              <svg class="w-5 h-5 text-primary-green mr-3" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+              </svg>
+              Unlimited message scheduling
+            </li>
+            <li class="flex items-center text-gray-600">
+              <svg class="w-5 h-5 text-primary-green mr-3" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+              </svg>
+              Access basic message templates
+            </li>
+            <li class="flex items-center text-gray-600">
+              <svg class="w-5 h-5 text-primary-green mr-3" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+              </svg>
+              24/7 customer support
+            </li>
+          </ul>
+          <button class="w-full bg-primary-blue text-white py-3 rounded-full font-semibold hover:opacity-90 transition-all hover-lift">
+            Get Started
+          </button>
+        </div>
+
+        <!-- Business Plan -->
+        <div class="bg-gradient-to-br from-primary-pink to-primary-blue rounded-3xl shadow-2xl p-8 text-white transform scale-105 relative">
+          <div class="absolute -top-4 left-1/2 transform -translate-x-1/2">
+            <span class="bg-primary-green text-white px-4 py-2 rounded-full text-sm font-semibold">Most Popular</span>
+          </div>
+          <div class="text-center mb-8">
+            <h3 class="text-2xl font-bold mb-2">Business Plan</h3>
+            <div class="text-4xl font-bold mb-2">$280<span class="text-lg opacity-80">/yr</span></div>
+          </div>
+          <ul class="space-y-4 mb-8">
+            <li class="flex items-center">
+              <svg class="w-5 h-5 text-primary-green mr-3" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+              </svg>
+              Advanced analytics tools
+            </li>
+            <li class="flex items-center">
+              <svg class="w-5 h-5 text-primary-green mr-3" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+              </svg>
+              Custom branding options
+            </li>
+            <li class="flex items-center">
+              <svg class="w-5 h-5 text-primary-green mr-3" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+              </svg>
+              Team collaboration features
+            </li>
+            <li class="flex items-center">
+              <svg class="w-5 h-5 text-primary-green mr-3" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+              </svg>
+              Dedicated account manager
+            </li>
+          </ul>
+          <button class="w-full bg-white text-primary-blue py-3 rounded-full font-semibold hover:opacity-90 transition-all hover-lift">
+            Get Started
+          </button>
+        </div>
+
+        <!-- Enterprise Plan -->
+        <div class="bg-white rounded-3xl shadow-xl p-8 border-2 border-gray-100 hover-lift">
+          <div class="text-center mb-8">
+            <h3 class="text-2xl font-bold text-gray-900 mb-2">Enterprise Plan</h3>
+            <div class="text-4xl font-bold text-primary-green mb-2">$480<span class="text-lg text-gray-500">/yr</span></div>
+          </div>
+          <ul class="space-y-4 mb-8">
+            <li class="flex items-center text-gray-600">
+              <svg class="w-5 h-5 text-primary-green mr-3" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+              </svg>
+              Custom integrations available
+            </li>
+            <li class="flex items-center text-gray-600">
+              <svg class="w-5 h-5 text-primary-green mr-3" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+              </svg>
+              Priority support
+            </li>
+            <li class="flex items-center text-gray-600">
+              <svg class="w-5 h-5 text-primary-green mr-3" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+              </svg>
+              AI-driven message insights
+            </li>
+            <li class="flex items-center text-gray-600">
+              <svg class="w-5 h-5 text-primary-green mr-3" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+              </svg>
+              Feature-rich platform access
+            </li>
+          </ul>
+          <button class="w-full bg-primary-green text-white py-3 rounded-full font-semibold hover:opacity-90 transition-all hover-lift">
+            Get Started
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Inspiring Messages -->
+  <section class="py-20 bg-gradient-to-br from-pink-50 to-purple-50">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="grid lg:grid-cols-2 gap-12 items-center">
+        <div>
+          <h2 class="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
+            Inspiring Messages for Your 
+            <span class="text-primary-pink">Loved Ones</span>
+          </h2>
+          <p class="text-lg text-gray-600 mb-8 leading-relaxed">
+            Craft heartfelt messages to share with all those you cherish. YourEkko helps you capture love and memories in the clearest way.
+          </p>
+          <div class="space-y-6 mb-8">
+            <div class="bg-white p-6 rounded-2xl shadow-lg hover-lift">
+              <p class="text-gray-800 font-medium">
+                <span class="text-primary-pink font-bold">Happy Birthday!</span> 🎉 
+                Wishing you a day filled with joy and a year filled with endless possibilities.
+              </p>
+            </div>
+            <div class="bg-white p-6 rounded-2xl shadow-lg hover-lift">
+              <p class="text-gray-800 font-medium">
+                <span class="text-primary-blue font-bold">I'm always here for you.</span> 
+                Whenever you need me, I'm just a message away, ready to listen and support you.
+              </p>
+            </div>
+          </div>
+          <button class="gradient-bg text-white px-8 py-4 rounded-full text-lg font-semibold hover:opacity-90 transition-all hover-lift">
+            View More Examples
+          </button>
+        </div>
+        <div>
+          <div class="relative">
+            <div class="absolute -inset-4 bg-primary-green rounded-3xl opacity-20 blur-2xl"></div>
+            <img src='/inspiring.jpeg' alt="Inspiring messages" class="relative w-full rounded-3xl shadow-2xl hover-lift">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Our Story -->
+  <section class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="grid lg:grid-cols-2 gap-12 items-center">
+        <div class="order-2 lg:order-1">
+          <div class="relative">
+            <div class="absolute -inset-4 gradient-bg rounded-3xl opacity-20 blur-2xl"></div>
+            <img src='/ourstory.jpeg' alt="Our story image" class="relative w-full rounded-3xl shadow-2xl hover-lift">
+          </div>
+        </div>
+        <div class="order-1 lg:order-2">
+          <h2 class="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
+            Our <span class="gradient-text">Story</span>
+          </h2>
+          <p class="text-lg text-gray-600 mb-6 leading-relaxed">
+            Connecting hearts through meaningful messages that transcend time and space.
+          </p>
+          <p class="text-lg text-gray-600 mb-8 leading-relaxed">
+            At YourEkko, we believe in the power of love that lasts beyond life. Our mission is to help you create heartfelt, spontaneous messages that provide comfort and connection for your loved ones, ensuring that distance and time never diminish the bonds we share.
+          </p>
+          <div class="flex flex-col sm:flex-row gap-4">
+            <button class="bg-primary-blue text-white px-8 py-3 rounded-full font-semibold hover:opacity-90 transition-all hover-lift">
+              Learn More
+            </button>
+            <button class="text-primary-blue border-2 border-primary-blue px-8 py-3 rounded-full font-semibold hover:bg-primary-blue hover:text-white transition-all">
+              Discover More
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQs -->
+  <section class="py-20 bg-gradient-to-br from-gray-50 to-blue-50">
+    <div class="max-w-4xl mx-auto px-6">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
+          Frequently Asked <span class="text-primary-green">Questions</span>
+        </h2>
+        <p class="text-xl text-gray-600">Find answers to your questions about YourEkko and how it works</p>
+      </div>
+
+      <div class="space-y-4">
+        <div class="faq-item bg-white rounded-2xl shadow-lg hover-lift">
+          <button class="faq-question w-full p-6 text-left flex items-center justify-between">
+            <h4 class="text-xl font-semibold text-gray-900">What is YourEkko?</h4>
+            <svg class="w-6 h-6 text-primary-blue transition-transform faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+            </svg>
+          </button>
+          <div class="faq-answer hidden px-6 pb-6">
+            <p class="text-gray-600 leading-relaxed">YourEkko is a platform that allows you to create and schedule heartfelt messages for your loved ones, ensuring your words of care and support transcend time and space.</p>
+          </div>
+        </div>
+
+        <div class="faq-item bg-white rounded-2xl shadow-lg hover-lift">
+          <button class="faq-question w-full p-6 text-left flex items-center justify-between">
+            <h4 class="text-xl font-semibold text-gray-900">How to create an Ekko?</h4>
+            <svg class="w-6 h-6 text-primary-blue transition-transform faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+            </svg>
+          </button>
+          <div class="faq-answer hidden px-6 pb-6">
+            <p class="text-gray-600 leading-relaxed">Log into YourEkko, choose "Create Message," write your heartfelt message, select a delivery date and time, and then hit send! It's that simple.</p>
+          </div>
+        </div>
+
+        <div class="faq-item bg-white rounded-2xl shadow-lg hover-lift">
+          <button class="faq-question w-full p-6 text-left flex items-center justify-between">
+            <h4 class="text-xl font-semibold text-gray-900">How does it work?</h4>
+            <svg class="w-6 h-6 text-primary-blue transition-transform faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+            </svg>
+          </button>
+          <div class="faq-answer hidden px-6 pb-6">
+            <p class="text-gray-600 leading-relaxed">Notifications are sent via push notifications or email at your chosen time, delivering your message even if the recipient is offline at that moment.</p>
+          </div>
+        </div>
+
+        <div class="faq-item bg-white rounded-2xl shadow-lg hover-lift">
+          <button class="faq-question w-full p-6 text-left flex items-center justify-between">
+            <h4 class="text-xl font-semibold text-gray-900">Can I cancel anytime?</h4>
+            <svg class="w-6 h-6 text-primary-blue transition-transform faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+            </svg>
+          </button>
+          <div class="faq-answer hidden px-6 pb-6">
+            <p class="text-gray-600 leading-relaxed">Yes, you can pause or delete your account at any time from your Settings page. We believe in giving you complete control over your account.</p>
+          </div>
+        </div>
+
+        <div class="faq-item bg-white rounded-2xl shadow-lg hover-lift">
+          <button class="faq-question w-full p-6 text-left flex items-center justify-between">
+            <h4 class="text-xl font-semibold text-gray-900">Can I share Ekkoes?</h4>
+            <svg class="w-6 h-6 text-primary-blue transition-transform faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+            </svg>
+          </button>
+          <div class="faq-answer hidden px-6 pb-6">
+            <p class="text-gray-600 leading-relaxed">Yes, you can share your scheduled messages with friends via share link or export them as a package for safekeeping.</p>
+          </div>
+        </div>
+
+        <div class="faq-item bg-white rounded-2xl shadow-lg hover-lift">
+          <button class="faq-question w-full p-6 text-left flex items-center justify-between">
+            <h4 class="text-xl font-semibold text-gray-900">What if I forget?</h4>
+            <svg class="w-6 h-6 text-primary-blue transition-transform faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+            </svg>
+          </button>
+          <div class="faq-answer hidden px-6 pb-6">
+            <p class="text-gray-600 leading-relaxed">You'll receive reminder alerts to confirm your scheduled messages before they send, so you never have to worry about forgetting.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-gray-900 text-white py-16">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="grid md:grid-cols-4 gap-8 mb-12">
+        <div class="md:col-span-2">
+          <div class="text-3xl font-bold gradient-text mb-4">YourEkko</div>
+          <p class="text-gray-400 mb-6 leading-relaxed">
+            Connecting hearts through meaningful messages that transcend time and space. Create lasting memories with those you love most.
+          </p>
+          <div class="text-gray-400">
+            <p>1234 Your Street, Your City, ST 56789</p>
+            <p>(123) 456-7890</p>
+            <p>hello@yourekko.com</p>
+          </div>
+        </div>
+        <div>
+          <h4 class="text-lg font-semibold mb-4 text-primary-green">Quick Links</h4>
+          <ul class="space-y-3">
+            <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Home Page</a></li>
+            <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Our Story</a></li>
+            <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Pricing Plans</a></li>
+            <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Blog</a></li>
+            <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Message Board</a></li>
+            <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Privacy Policy</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="text-lg font-semibold mb-4 text-primary-pink">Connect With Us</h4>
+          <div class="flex space-x-4">
+            <a href="#" class="w-10 h-10 bg-primary-blue rounded-full flex items-center justify-center hover:opacity-80 transition-opacity">
+              <span class="text-xl">🐦</span>
+            </a>
+            <a href="#" class="w-10 h-10 bg-primary-pink rounded-full flex items-center justify-center hover:opacity-80 transition-opacity">
+              <span class="text-xl">📘</span>
+            </a>
+            <a href="#" class="w-10 h-10 bg-primary-green rounded-full flex items-center justify-center hover:opacity-80 transition-opacity">
+              <span class="text-xl">📸</span>
+            </a>
+            <a href="#" class="w-10 h-10 bg-primary-blue rounded-full flex items-center justify-center hover:opacity-80 transition-opacity">
+              <span class="text-xl">🔗</span>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="border-t border-gray-800 pt-8 text-center">
+        <p class="text-gray-400">© 2025 YourEkko. All rights reserved. Made with ❤️ for connecting hearts.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script>
+    // FAQ Toggle
+    document.querySelectorAll('.faq-question').forEach((question) => {
+      question.addEventListener('click', () => {
+        const faqItem = question.parentElement;
+        const answer = faqItem.querySelector('.faq-answer');
+        const icon = question.querySelector('.faq-icon');
+        
+        // Close all other FAQs
+        document.querySelectorAll('.faq-item').forEach((item) => {
+          if (item !== faqItem) {
+            item.querySelector('.faq-answer').classList.add('hidden');
+            item.querySelector('.faq-icon').style.transform = 'rotate(0deg)';
+          }
+        });
+        
+        // Toggle current FAQ
+        answer.classList.toggle('hidden');
+        if (answer.classList.contains('hidden')) {
+          icon.style.transform = 'rotate(0deg)';
+        } else {
+          icon.style.transform = 'rotate(180deg)';
+        }
+      });
+    });
+
+    // Smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
+
+    // Add scroll effect to header
+    window.addEventListener('scroll', () => {
+      const header = document.querySelector('header');
+      if (window.scrollY > 100) {
+        header.style.background = 'rgba(255, 255, 255, 0.95)';
+      } else {
+        header.style.background = 'rgba(255, 255, 255, 0.1)';
+      }
+    });
+
+    // Intersection Observer for animations
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, observerOptions);
+
+    // Observe all sections for scroll animations
+    document.querySelectorAll('section').forEach((section) => {
+      section.style.opacity = '0';
+      section.style.transform = 'translateY(30px)';
+      section.style.transition = 'all 0.8s ease';
+      observer.observe(section);
+    });
+  </script>
+</body>
+</html>
