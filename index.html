@@ -11,9 +11,9 @@
       theme: {
         extend: {
           colors: {
-            'primary-blue': '#2f3e9e',
-            'primary-pink': '#d88ca4',
-            'primary-green': '#00bba0',
+            'primary-blue': '#1812faff',
+            'primary-pink': '#e11ca9ff',
+            'primary-green': '#00ba9eff',
           },
           fontFamily: {
             'inter': ['Inter', 'sans-serif'],
@@ -67,7 +67,7 @@
 
   <!-- Header -->
   <header class="fixed top-0 w-full z-50 glass-effect">
-    <div class="max-w-7xl mx-auto px-6 py-4">
+    <div class="max-w-7xl mx-auto px-6 py-2">
       <div class="flex items-center justify-between">
         <div class="">
           <img src="/logo.png" width="50" alt="">
@@ -128,9 +128,10 @@
           </div>
         </div>
         <div class="order-1 lg:order-2">
-          <h2 class="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
-            Discover the Heart of 
-            <span class="text-primary-pink">YourEkko</span>
+          <h2 class="text-4xl lg:text-5xl font-bold text-gray-900 mb-6 flex items-center">
+            <img src="/logo.png" width="40" height="40" alt="" class="mr-2">
+            Welcome to
+            <span class="text-primary-pink ml-2">YourEkko</span>
           </h2>
           <p class="text-lg text-gray-600 mb-8 leading-relaxed">
             YourEkko is a unique platform that allows you to create and schedule heartfelt messages for your loved ones, ensuring your words of care and support transcend time. With our intuitive interface, you can craft meaningful Ekko messages that deliver exactly when and how you need them.
@@ -152,8 +153,9 @@
   <section class="py-20 bg-gradient-to-br from-gray-50 to-blue-50">
     <div class="max-w-7xl mx-auto px-6">
       <div class="text-center mb-16">
-        <h2 class="text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
-          How does this <span class="text-primary-green">work</span>?
+        <h2 class="text-4xl lg:text-5xl font-bold text-gray-900 mb-4 flex items-center justify-center">
+          <img src="/logo.png" width="40" height="40" alt="" class="mr-2">
+          How does this <span class="text-primary-green ml-2">work</span>?
         </h2>
         <p class="text-xl text-gray-600">Simple steps to connect hearts across time and space</p>
       </div>
@@ -190,8 +192,9 @@
   <section class="py-20 bg-white">
     <div class="max-w-7xl mx-auto px-6">
       <div class="text-center mb-16">
-        <h2 class="text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
-          <span class="gradient-text">Pricing</span> Options
+        <h2 class="text-4xl lg:text-5xl font-bold text-gray-900 mb-4 flex items-center justify-center">
+          <img src="/logo.png" width="40" height="40" alt="" class="mr-4">
+          <span class="gradient-text">Pricing</span> <span class="ml-2">Options</span>
         </h2>
         <p class="text-xl text-gray-600">Choose the perfect plan for your heartfelt messages</p>
       </div>
@@ -321,16 +324,31 @@
           </p>
           <div class="space-y-6 mb-8">
             <div class="bg-white p-6 rounded-2xl shadow-lg hover-lift">
-              <p class="text-gray-800 font-medium">
-                <span class="text-primary-pink font-bold">Happy Birthday!</span> 🎉 
-                Wishing you a day filled with joy and a year filled with endless possibilities.
+              <p class="text-gray-800 font-medium mb-2">
+                "Everything will be okay. I love you! Smile 😊 – Matt"
               </p>
             </div>
             <div class="bg-white p-6 rounded-2xl shadow-lg hover-lift">
-              <p class="text-gray-800 font-medium">
-                <span class="text-primary-blue font-bold">I'm always here for you.</span> 
-                Whenever you need me, I'm just a message away, ready to listen and support you.
+              <p class="text-gray-800 font-medium mb-3">
+                "Hey Jen. Everything will be okay. You were always there for me and I always cherished our friendship. I'm sorry I can't be there for you, but I hope some retail therapy will help 🛍️ I love you so much! – Sara"
               </p>
+              <div class="flex items-center text-primary-green font-semibold">
+                <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                  <path d="M4 4a2 2 0 00-2 2v1h16V6a2 2 0 00-2-2H4zM18 9H2v5a2 2 0 002 2h12a2 2 0 002-2V9zM4 13a1 1 0 011-1h1a1 1 0 110 2H5a1 1 0 01-1-1zm5-1a1 1 0 100 2h1a1 1 0 100-2H9z"></path>
+                </svg>
+                Includes gift of $500
+              </div>
+            </div>
+            <div class="bg-white p-6 rounded-2xl shadow-lg hover-lift">
+              <p class="text-gray-800 font-medium mb-3">
+                "In case this day came, I couldn't let you enjoy another game night without me, or at least, sort of... Put these towards a Lions home game and have yourself a night, on me! 🏈 - John"
+              </p>
+              <div class="flex items-center text-primary-green font-semibold">
+                <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                  <path d="M4 4a2 2 0 00-2 2v1h16V6a2 2 0 00-2-2H4zM18 9H2v5a2 2 0 002 2h12a2 2 0 002-2V9zM4 13a1 1 0 011-1h1a1 1 0 110 2H5a1 1 0 01-1-1zm5-1a1 1 0 100 2h1a1 1 0 100-2H9z"></path>
+                </svg>
+                Includes gift of $500
+              </div>
             </div>
           </div>
           <button class="gradient-bg text-white px-8 py-4 rounded-full text-lg font-semibold hover:opacity-90 transition-all hover-lift">
@@ -347,6 +365,7 @@
     </div>
   </section>
 
+
   <!-- Our Story -->
   <section class="py-20 bg-white">
     <div class="max-w-7xl mx-auto px-6">
@@ -358,9 +377,10 @@
           </div>
         </div>
         <div class="order-1 lg:order-2">
-          <h2 class="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
-            Our <span class="gradient-text">Story</span>
-          </h2>
+          <h2 class="text-4xl lg:text-5xl font-bold text-gray-900 mb-6 flex items-center">
+            <img src="/logo.png" width="40" height="40" alt="" class="mr-4">
+            Our <span class="gradient-text ml-2">Story</span>
+          </h2>          
           <p class="text-lg text-gray-600 mb-6 leading-relaxed">
             Connecting hearts through meaningful messages that transcend time and space.
           </p>
@@ -384,82 +404,174 @@
   <section class="py-20 bg-gradient-to-br from-gray-50 to-blue-50">
     <div class="max-w-4xl mx-auto px-6">
       <div class="text-center mb-16">
-        <h2 class="text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
-          Frequently Asked <span class="text-primary-green">Questions</span>
+        <h2 class="text-4xl lg:text-5xl font-bold text-gray-900 mb-4 flex items-center justify-center">
+          <img src="/logo.png" width="40" height="40" alt="" class="mr-4">
+          Frequently Asked <span class="text-primary-green ml-2">Questions</span>
         </h2>
         <p class="text-xl text-gray-600">Find answers to your questions about YourEkko and how it works</p>
       </div>
 
-      <div class="space-y-4">
-        <div class="faq-item bg-white rounded-2xl shadow-lg hover-lift">
-          <button class="faq-question w-full p-6 text-left flex items-center justify-between">
-            <h4 class="text-xl font-semibold text-gray-900">What is YourEkko?</h4>
-            <svg class="w-6 h-6 text-primary-blue transition-transform faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-            </svg>
-          </button>
-          <div class="faq-answer hidden px-6 pb-6">
-            <p class="text-gray-600 leading-relaxed">YourEkko is a platform that allows you to create and schedule heartfelt messages for your loved ones, ensuring your words of care and support transcend time and space.</p>
+      <div class="max-w-4xl mx-auto px-6">
+      
+        <!-- Left Column FAQs -->
+        <div class="grid lg:grid-cols-2 gap-8 mb-12">
+          <div class="space-y-6">
+            
+            <!-- What is YourEkko? -->
+            <div class="faq-card bg-white rounded-2xl shadow-lg p-6">
+              <button class="faq-question w-full text-left flex items-center justify-between group">
+                <h3 class="text-xl font-semibold text-gray-900 group-hover:text-primary-blue transition-colors">What is YourEkko?</h3>
+                <div class="flex-shrink-0 ml-4">
+                  <svg class="w-6 h-6 text-primary-blue transition-transform faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                  </svg>
+                </div>
+              </button>
+              <div class="faq-answer mt-4">
+                <p class="text-gray-600 leading-relaxed">YourEkko is a platform that allows you to create meaningful posthumous messages for your loved ones. With our service, you can schedule these heartfelt messages to be sent at the right moment. It's a way to keep connections alive, even after parting.</p>
+              </div>
+            </div>
+  
+            <!-- How to create Ekkoes? -->
+            <div class="faq-card bg-white rounded-2xl shadow-lg p-6">
+              <button class="faq-question w-full text-left flex items-center justify-between group">
+                <h3 class="text-xl font-semibold text-gray-900 group-hover:text-primary-blue transition-colors">How to create Ekkoes?</h3>
+                <div class="flex-shrink-0 ml-4">
+                  <svg class="w-6 h-6 text-primary-blue transition-transform faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                  </svg>
+                </div>
+              </button>
+              <div class="faq-answer mt-4">
+                <p class="text-gray-600 leading-relaxed">Creating Ekkoes is simple! Just sign up, choose a message type, and personalize it. You can schedule it for any future date, ensuring your sentiments reach your loved ones when it matters most.</p>
+              </div>
+            </div>
+  
+            <!-- Is it secure? -->
+            <div class="faq-card bg-white rounded-2xl shadow-lg p-6">
+              <button class="faq-question w-full text-left flex items-center justify-between group">
+                <h3 class="text-xl font-semibold text-gray-900 group-hover:text-primary-blue transition-colors">Is it secure?</h3>
+                <div class="flex-shrink-0 ml-4">
+                  <svg class="w-6 h-6 text-primary-blue transition-transform faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                  </svg>
+                </div>
+              </button>
+              <div class="faq-answer mt-4">
+                <p class="text-gray-600 leading-relaxed">Absolutely! YourEkko prioritizes your privacy and data security. We use advanced encryption methods to ensure that your messages and personal information are protected.</p>
+              </div>
+            </div>
+  
+            <!-- Can I edit messages? -->
+            <div class="faq-card bg-white rounded-2xl shadow-lg p-6">
+              <button class="faq-question w-full text-left flex items-center justify-between group">
+                <h3 class="text-xl font-semibold text-gray-900 group-hover:text-primary-blue transition-colors">Can I edit messages?</h3>
+                <div class="flex-shrink-0 ml-4">
+                  <svg class="w-6 h-6 text-primary-blue transition-transform faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                  </svg>
+                </div>
+              </button>
+              <div class="faq-answer mt-4">
+                <p class="text-gray-600 leading-relaxed">Yes, you can edit your messages anytime before they are scheduled to be sent. Simply log in to your account and make the necessary changes. We want to ensure your messages are just right.</p>
+              </div>
+            </div>
+  
+            <!-- What are Ekkoes? -->
+            <div class="faq-card bg-white rounded-2xl shadow-lg p-6">
+              <button class="faq-question w-full text-left flex items-center justify-between group">
+                <h3 class="text-xl font-semibold text-gray-900 group-hover:text-primary-blue transition-colors">What are Ekkoes?</h3>
+                <div class="flex-shrink-0 ml-4">
+                  <svg class="w-6 h-6 text-primary-blue transition-transform faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                  </svg>
+                </div>
+              </button>
+              <div class="faq-answer mt-4">
+                <p class="text-gray-600 leading-relaxed">Ekkoes are heartfelt messages you create for your loved ones to be sent posthumously. They can include personal stories, memories, or simply expressions of love. Each Ekko is a unique way to honor and remember.</p>
+              </div>
+            </div>
+  
           </div>
-        </div>
-
-        <div class="faq-item bg-white rounded-2xl shadow-lg hover-lift">
-          <button class="faq-question w-full p-6 text-left flex items-center justify-between">
-            <h4 class="text-xl font-semibold text-gray-900">How to create an Ekko?</h4>
-            <svg class="w-6 h-6 text-primary-blue transition-transform faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-            </svg>
-          </button>
-          <div class="faq-answer hidden px-6 pb-6">
-            <p class="text-gray-600 leading-relaxed">Log into YourEkko, choose "Create Message," write your heartfelt message, select a delivery date and time, and then hit send! It's that simple.</p>
-          </div>
-        </div>
-
-        <div class="faq-item bg-white rounded-2xl shadow-lg hover-lift">
-          <button class="faq-question w-full p-6 text-left flex items-center justify-between">
-            <h4 class="text-xl font-semibold text-gray-900">How does it work?</h4>
-            <svg class="w-6 h-6 text-primary-blue transition-transform faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-            </svg>
-          </button>
-          <div class="faq-answer hidden px-6 pb-6">
-            <p class="text-gray-600 leading-relaxed">Notifications are sent via push notifications or email at your chosen time, delivering your message even if the recipient is offline at that moment.</p>
-          </div>
-        </div>
-
-        <div class="faq-item bg-white rounded-2xl shadow-lg hover-lift">
-          <button class="faq-question w-full p-6 text-left flex items-center justify-between">
-            <h4 class="text-xl font-semibold text-gray-900">Can I cancel anytime?</h4>
-            <svg class="w-6 h-6 text-primary-blue transition-transform faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-            </svg>
-          </button>
-          <div class="faq-answer hidden px-6 pb-6">
-            <p class="text-gray-600 leading-relaxed">Yes, you can pause or delete your account at any time from your Settings page. We believe in giving you complete control over your account.</p>
-          </div>
-        </div>
-
-        <div class="faq-item bg-white rounded-2xl shadow-lg hover-lift">
-          <button class="faq-question w-full p-6 text-left flex items-center justify-between">
-            <h4 class="text-xl font-semibold text-gray-900">Can I share Ekkoes?</h4>
-            <svg class="w-6 h-6 text-primary-blue transition-transform faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-            </svg>
-          </button>
-          <div class="faq-answer hidden px-6 pb-6">
-            <p class="text-gray-600 leading-relaxed">Yes, you can share your scheduled messages with friends via share link or export them as a package for safekeeping.</p>
-          </div>
-        </div>
-
-        <div class="faq-item bg-white rounded-2xl shadow-lg hover-lift">
-          <button class="faq-question w-full p-6 text-left flex items-center justify-between">
-            <h4 class="text-xl font-semibold text-gray-900">What if I forget?</h4>
-            <svg class="w-6 h-6 text-primary-blue transition-transform faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-            </svg>
-          </button>
-          <div class="faq-answer hidden px-6 pb-6">
-            <p class="text-gray-600 leading-relaxed">You'll receive reminder alerts to confirm your scheduled messages before they send, so you never have to worry about forgetting.</p>
+  
+          <!-- Right Column FAQs -->
+          <div class="space-y-6">
+  
+            <!-- How much does it cost? -->
+            <div class="faq-card bg-white rounded-2xl shadow-lg p-6">
+              <button class="faq-question w-full text-left flex items-center justify-between group">
+                <h3 class="text-xl font-semibold text-gray-900 group-hover:text-primary-pink transition-colors">How much does it cost?</h3>
+                <div class="flex-shrink-0 ml-4">
+                  <svg class="w-6 h-6 text-primary-pink transition-transform faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                  </svg>
+                </div>
+              </button>
+              <div class="faq-answer mt-4">
+                <p class="text-gray-600 leading-relaxed">YourEkko offers various subscription plans, including a free tier to get started. Paid plans provide additional features and benefits. You can choose the plan that best fits your needs.</p>
+              </div>
+            </div>
+  
+            <!-- Can I cancel anytime? -->
+            <div class="faq-card bg-white rounded-2xl shadow-lg p-6">
+              <button class="faq-question w-full text-left flex items-center justify-between group">
+                <h3 class="text-xl font-semibold text-gray-900 group-hover:text-primary-pink transition-colors">Can I cancel anytime?</h3>
+                <div class="flex-shrink-0 ml-4">
+                  <svg class="w-6 h-6 text-primary-pink transition-transform faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                  </svg>
+                </div>
+              </button>
+              <div class="faq-answer mt-4">
+                <p class="text-gray-600 leading-relaxed">Yes, you can cancel your subscription at any time without any penalties. Just go to your account settings and follow the cancellation process. We want you to feel in control.</p>
+              </div>
+            </div>
+  
+            <!-- How do I sign up? -->
+            <div class="faq-card bg-white rounded-2xl shadow-lg p-6">
+              <button class="faq-question w-full text-left flex items-center justify-between group">
+                <h3 class="text-xl font-semibold text-gray-900 group-hover:text-primary-pink transition-colors">How do I sign up?</h3>
+                <div class="flex-shrink-0 ml-4">
+                  <svg class="w-6 h-6 text-primary-pink transition-transform faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                  </svg>
+                </div>
+              </button>
+              <div class="faq-answer mt-4">
+                <p class="text-gray-600 leading-relaxed">Signing up is easy! Visit our homepage and click on the 'Start for Free' button. Fill out the required information, and you'll be on your way to creating your first Ekko.</p>
+              </div>
+            </div>
+  
+            <!-- Can I share Ekkoes? -->
+            <div class="faq-card bg-white rounded-2xl shadow-lg p-6">
+              <button class="faq-question w-full text-left flex items-center justify-between group">
+                <h3 class="text-xl font-semibold text-gray-900 group-hover:text-primary-pink transition-colors">Can I share Ekkoes?</h3>
+                <div class="flex-shrink-0 ml-4">
+                  <svg class="w-6 h-6 text-primary-pink transition-transform faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                  </svg>
+                </div>
+              </button>
+              <div class="faq-answer mt-4">
+                <p class="text-gray-600 leading-relaxed">Yes, you can share your Ekkoes with family and friends. You have the option to send them via email or through our platform to keep it thoughtful and involve others in your message.</p>
+              </div>
+            </div>
+  
+            <!-- What if I forget? -->
+            <div class="faq-card bg-white rounded-2xl shadow-lg p-6">
+              <button class="faq-question w-full text-left flex items-center justify-between group">
+                <h3 class="text-xl font-semibold text-gray-900 group-hover:text-primary-pink transition-colors">What if I forget?</h3>
+                <div class="flex-shrink-0 ml-4">
+                  <svg class="w-6 h-6 text-primary-pink transition-transform faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                  </svg>
+                </div>
+              </button>
+              <div class="faq-answer mt-4">
+                <p class="text-gray-600 leading-relaxed">If you forget your scheduled Ekkoes, don't worry! We send reminders to your email before the messages are sent. You can always log in to check your scheduled messages.</p>
+              </div>
+            </div>
+  
           </div>
         </div>
       </div>
