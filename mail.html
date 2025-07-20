@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>YourEkko Email</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'primary-blue': '#1812faff',
+            'primary-pink': '#ff6b9d',
+            'primary-green': '#00ba9eff',
+          },
+          fontFamily: {
+            'inter': ['Inter', 'sans-serif'],
+          },
+          animation: {
+            'fade-in': 'fadeIn 0.6s ease-in-out',
+            'slide-up': 'slideUp 0.8s ease-out',
+            'bounce-subtle': 'bounceSubtle 2s infinite',
+            'float': 'float 3s ease-in-out infinite',
+            'pulse-glow': 'pulseGlow 2s ease-in-out infinite',
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes slideUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes bounceSubtle {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-20px); }
+    }
+    @keyframes pulseGlow {
+      0%, 100% { box-shadow: 0 0 20px rgba(255, 107, 157, 0.3); }
+      50% { box-shadow: 0 0 40px rgba(255, 107, 157, 0.6); }
+    }
+    .gradient-bg {
+      background: linear-gradient(135deg, #1812faff 0%, #ff6b9d 100%);
+    }
+    .gradient-text {
+      background: linear-gradient(135deg, #1812faff 0%, #00ba9eff 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .glass-effect {
+      backdrop-filter: blur(10px);
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    .hover-lift {
+      transition: all 0.3s ease;
+    }
+    .hover-lift:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    }
+    .email-container {
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.9) 100%);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+    }
+    .floating-shape {
+      position: absolute;
+      border-radius: 50%;
+      opacity: 0.1;
+      animation: float 6s ease-in-out infinite;
+    }
+    .floating-shape:nth-child(1) {
+      width: 80px;
+      height: 80px;
+      background: #1812faff;
+      top: 10%;
+      left: 5%;
+      animation-delay: 0s;
+    }
+    .floating-shape:nth-child(2) {
+      width: 120px;
+      height: 120px;
+      background: #ff6b9d;
+      top: 70%;
+      right: 10%;
+      animation-delay: 2s;
+    }
+    .floating-shape:nth-child(3) {
+      width: 60px;
+      height: 60px;
+      background: #00ba9eff;
+      bottom: 20%;
+      left: 15%;
+      animation-delay: 4s;
+    }
+    .email-header {
+      background: linear-gradient(135deg, #f8f9ff 0%, #f0f4ff 100%);
+      border-bottom: 1px solid rgba(24, 18, 250, 0.1);
+    }
+    .action-button {
+      background: linear-gradient(135deg, #ff6b9d 0%, #ff8fab 100%);
+      transition: all 0.3s ease;
+    }
+    .action-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 30px rgba(255, 107, 157, 0.4);
+    }
+  </style>
+</head>
+<body class="font-inter bg-gradient-to-br from-gray-50 via-blue-50 to-purple-50 min-h-screen relative overflow-hidden">
+
+  <!-- Email Container -->
+  <div class="min-h-screen flex items-center justify-center p-4">
+    <div class="email-container rounded-3xl shadow-2xl max-w-2xl w-full overflow-hidden hover-lift">
+
+      <!-- Email Content -->
+      <div class="p-8">
+        <!-- Logo Section -->
+        <div class="text-center mb-8">
+          <div class="flex items-center justify-center mb-4 ">
+            <div>
+              <img src="/Color1.png" width="50" alt="">
+            </div>
+              <div class="text-3xl font-bold gradient-text">YourEkko</div>
+
+          </div>
+        </div>
+
+        <!-- Welcome Message -->
+        <div class="text-center mb-8">
+          <h1 class="text-2xl font-bold text-gray-900 mb-4">Hello Developer Ak!</h1>
+          <p class="text-gray-600 leading-relaxed text-lg">
+            Punit K, has Signed Up for YourEkko. Please confirm you're aware by accepting your Terms and Conditions.
+          </p>
+        </div>
+
+        <!-- Action Button -->
+        <div class="text-center mb-8">
+          <button class="action-button text-white px-12 py-4 rounded-full text-lg font-semibold hover-lift shadow-xl animation-pulse-glow">
+            CLICK HERE
+          </button>
+        </div>
+
+        <!-- Footer -->
+        <div class="text-center">
+          <div class="gradient-bg text-white py-4 px-8 rounded-2xl shadow-lg">
+            <p class="text-sm font-medium">© 2025 YourEkko. All rights reserved.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script>
+    // Add interactive effects
+    document.addEventListener('DOMContentLoaded', function() {
+      // Animate email container on load
+      const emailContainer = document.querySelector('.email-container');
+      emailContainer.style.transform = 'translateY(30px)';
+      emailContainer.style.opacity = '0';
+      
+      setTimeout(() => {
+        emailContainer.style.transition = 'all 0.8s ease';
+        emailContainer.style.transform = 'translateY(0)';
+        emailContainer.style.opacity = '1';
+      }, 200);
+
+      // Button click effect
+      document.querySelector('.action-button').addEventListener('click', function() {
+        this.style.transform = 'scale(0.95)';
+        setTimeout(() => {
+          this.style.transform = 'translateY(-2px)';
+          alert('Terms and Conditions acceptance confirmed!');
+        }, 150);
+      });
+
+      // Add hover effects to action buttons
+      document.querySelectorAll('button').forEach(button => {
+        button.addEventListener('mouseenter', function() {
+          this.style.transform = 'translateY(-1px)';
+        });
+        
+        button.addEventListener('mouseleave', function() {
+          this.style.transform = 'translateY(0)';
+        });
+      });
+    });
+  </script>
+</body>
+</html>

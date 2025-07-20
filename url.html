@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>YourEkko – Trusted Contact Terms and Conditions</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'primary-blue': '#1812faff',
+            'primary-pink': '#ff6b9d',
+            'primary-green': '#00ba9eff',
+          },
+          fontFamily: {
+            'inter': ['Inter', 'sans-serif'],
+          },
+          animation: {
+            'fade-in': 'fadeIn 0.6s ease-in-out',
+            'slide-up': 'slideUp 0.8s ease-out',
+            'bounce-subtle': 'bounceSubtle 2s infinite',
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes slideUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes bounceSubtle {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+    .gradient-bg {
+      background: linear-gradient(135deg, #1812faff 0%, #ff6b9d 100%);
+    }
+    .gradient-text {
+      background: linear-gradient(135deg, #1812faff 0%, #00ba9eff 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .glass-effect {
+      backdrop-filter: blur(10px);
+      background: rgba(255, 255, 255, 0.95);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    .hover-lift {
+      transition: all 0.3s ease;
+    }
+    .hover-lift:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    }
+    .custom-checkbox {
+      appearance: none;
+      width: 20px;
+      height: 20px;
+      border: 2px solid #d1d5db;
+      border-radius: 4px;
+      position: relative;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    .custom-checkbox:checked {
+      background: linear-gradient(135deg, #2f3e9e 0%, #00bba0 100%);
+      border-color: #00bba0;
+    }
+    .custom-checkbox:checked::after {
+      content: '✓';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: white;
+      font-size: 12px;
+      font-weight: bold;
+    }
+    .terms-section {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeIn 0.6s ease-in-out forwards;
+    }
+    .terms-section:nth-child(2) { animation-delay: 0.1s; }
+    .terms-section:nth-child(3) { animation-delay: 0.2s; }
+    .terms-section:nth-child(4) { animation-delay: 0.3s; }
+  </style>
+</head>
+<body class="font-inter bg-gradient-to-br from-gray-50 to-blue-50 min-h-screen">
+
+  <!-- Main Content -->
+  <main class="pt-32 pb-16">
+    <div class="max-w-6xl mx-auto px-6">
+      
+      <!-- Hero Section -->
+      <div class="text-center mb-10 terms-section">
+        <div>
+          <div class="flex justify-center mb-6">
+            <img src="/Color1.png" width="100" alt="">
+          </div>
+        </div>
+        <div>
+            
+        <h1 class="text-4xl lg:text-5xl font-bold text-gray-900 ml-4">
+          Trusted Contact <span class="gradient-text">Terms and Conditions</span>
+        </h1>
+        <p class="text-xl text-gray-600 leading-relaxed max-w-2xl mx-auto">
+          Please review and accept these terms to become a trusted contact and help us connect hearts across time and space.
+        </p>
+        </div>
+      </div>
+
+      <!-- Agreement Section -->
+      <div class="bg-white rounded-3xl shadow-2xl p-8 lg:p-12 terms-section">
+        <div class="flex items-start space-x-4 mb-8">
+          <input type="checkbox" id="agree-terms" class="custom-checkbox mt-1 w-10">
+          <label for="agree-terms" class="text-gray-700 leading-relaxed cursor-pointer">
+            <span class="block text-lg font-medium text-gray-900 mb-2">I Accept These Terms</span>
+            I have read and agree to the following Terms and Conditions as a Trusted Contact with YourEkko. This includes receiving emails and texts from YourEkko related to a loved one.
+            <a href="/terms-full" class="text-primary-blue hover:text-primary-pink transition-colors font-medium ml-1">
+              View Full Terms and Conditions →
+            </a>
+          </label>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="flex flex-col sm:flex-row gap-4">
+          <button id="proceed-btn" class="flex-1 bg-gradient-to-r from-primary-pink to-primary-blue text-white px-8 py-4 rounded-2xl text-lg font-semibold hover:shadow-xl transition-all hover-lift disabled:opacity-50 disabled:cursor-not-allowed" disabled>
+            <span class="flex items-center justify-center">
+              <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+              </svg>
+              Proceed as Trusted Contact
+            </span>
+          </button>
+          <button class="flex-1 border-2 border-gray-300 text-gray-700 px-8 py-4 rounded-2xl text-lg font-semibold hover:border-primary-blue hover:text-primary-blue transition-all hover-lift">
+            <span class="flex items-center justify-center">
+              <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+              </svg>
+              Go Back
+            </span>
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Scripts -->
+  <script>
+    // Checkbox and button interaction
+    const checkbox = document.getElementById('agree-terms');
+    const proceedBtn = document.getElementById('proceed-btn');
+    
+    checkbox.addEventListener('change', function() {
+      if (this.checked) {
+        proceedBtn.disabled = false;
+        proceedBtn.classList.remove('opacity-50', 'cursor-not-allowed');
+        proceedBtn.classList.add('animate-pulse');
+        setTimeout(() => {
+          proceedBtn.classList.remove('animate-pulse');
+        }, 1000);
+      } else {
+        proceedBtn.disabled = true;
+        proceedBtn.classList.add('opacity-50', 'cursor-not-allowed');
+      }
+    });
+
+    // Proceed button click
+    proceedBtn.addEventListener('click', function() {
+      if (!this.disabled) {
+        // Add success animation
+        this.innerHTML = `
+          <span class="flex items-center justify-center">
+            <svg class="w-5 h-5 mr-2 animate-spin" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path>
+            </svg>
+            Processing...
+          </span>
+        `;
+        
+        // Simulate processing
+        setTimeout(() => {
+          this.innerHTML = `
+            <span class="flex items-center justify-center">
+              <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+              </svg>
+              Success! Redirecting...
+            </span>
+          `;
+          this.classList.add('bg-green-500');
+          
+          // Redirect after success message
+          setTimeout(() => {
+            window.location.href = '/dashboard';
+          }, 1500);
+        }, 2000);
+      }
+    });
+
+    // Smooth scroll animation for sections
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, observerOptions);
+
+    // Observe terms sections
+    document.querySelectorAll('.terms-section').forEach((section) => {
+      observer.observe(section);
+    });
+
+    // Header scroll effect
+    window.addEventListener('scroll', () => {
+      const header = document.querySelector('header');
+      if (window.scrollY > 100) {
+        header.style.background = 'rgba(255, 255, 255, 0.98)';
+        header.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.1)';
+      } else {
+        header.style.background = 'rgba(255, 255, 255, 0.95)';
+        header.style.boxShadow = 'none';
+      }
+    });
+  </script>
+</body>
+</html>

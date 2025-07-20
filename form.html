@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>YourEkko – Create Ekko</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'primary-blue': '#1812faff',
+            'primary-pink': '#ff6b9d',
+            'primary-green': '#00ba9eff',
+          },
+          fontFamily: {
+            'inter': ['Inter', 'sans-serif'],
+          },
+          animation: {
+            'fade-in': 'fadeIn 0.6s ease-in-out',
+            'slide-up': 'slideUp 0.8s ease-out',
+            'bounce-subtle': 'bounceSubtle 2s infinite',
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes slideUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .gradient-bg {
+      background: linear-gradient(135deg, #1812faff 0%, #ff6b9d 100%);
+    }
+    .gradient-text {
+      background: linear-gradient(135deg, #1812faff 0%, #00ba9eff 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .glass-effect {
+      backdrop-filter: blur(10px);
+      background: rgba(255, 255, 255, 0.95);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    .hover-lift {
+      transition: all 0.3s ease;
+    }
+    .hover-lift:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    }
+    .form-input {
+      transition: all 0.3s ease;
+      border: 2px solid #e5e7eb;
+    }
+    .form-input:focus {
+      outline: none;
+      border-color: #1812faff;
+      box-shadow: 0 0 0 3px rgba(24, 18, 250, 0.1);
+    }
+    .form-input:hover {
+      border-color: #d1d5db;
+    }
+    .form-select {
+      background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
+      background-position: right 0.5rem center;
+      background-repeat: no-repeat;
+      background-size: 1.5em 1.5em;
+      padding-right: 2.5rem;
+    }
+    .alert-pink {
+      background: linear-gradient(135deg, rgba(255, 107, 157, 0.1), rgba(255, 107, 157, 0.05));
+      border: 1px solid rgba(255, 107, 157, 0.2);
+    }
+    .close-btn {
+      transition: all 0.2s ease;
+    }
+    .close-btn:hover {
+      background: rgba(0, 0, 0, 0.1);
+    }
+  </style>
+</head>
+<body class="font-inter bg-gray-50 min-h-screen">
+
+  <!-- Header -->
+  <header class="fixed top-0 w-full z-50 glass-effect shadow-sm">
+    <div class="max-w-7xl mx-auto px-6 py-4">
+      <div class="flex items-center justify-between">
+        <div class="flex items-center space-x-4">
+          <div class="">
+            <img src="/Color1.png" width="50" alt="">
+          </div>
+          <div class="text-2xl font-bold gradient-text">YourEkko</div>
+        </div>
+        <div class="flex items-center space-x-4">
+          <button class="px-4 py-2 text-gray-600 hover:text-gray-800 font-medium transition-colors">
+            Back to Dashboard
+          </button>
+          <div class="w-10 h-10 bg-primary-blue rounded-full flex items-center justify-center text-white font-semibold">
+            MK
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="pt-24 pb-16">
+    <div class="max-w-4xl mx-auto px-6">
+      
+      <!-- Page Header -->
+      <div class="mb-8 animate-fade-in">
+        <div class="flex items-center justify-between">
+          <div>
+            <h1 class="text-4xl font-bold gradient-text mb-2">Create New Ekko</h1>
+            <p class="text-gray-600">Schedule a message to be delivered at a specific time</p>
+          </div>
+          <button class="close-btn w-10 h-10 bg-gray-100 hover:bg-gray-200 rounded-full flex items-center justify-center transition-colors">
+            <svg class="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Form Container -->
+      <div class="bg-white rounded-2xl shadow-lg p-8 hover-lift animate-slide-up">
+        <form class="space-y-8">
+          
+          <!-- Personal Information Section -->
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div>
+              <label class="block text-sm font-semibold text-gray-700 mb-3">
+                First Name 
+                <span class="text-red-400 ml-1">*</span>
+                <span class="inline-block w-3 h-3 rounded-full ml-2 cursor-help" title="Required field"></span>
+              </label>
+              <input 
+                type="text" 
+                value="zach"
+                class="form-input w-full px-4 py-3 rounded-xl bg-gray-50 font-medium text-gray-800"
+                placeholder="Enter first name"
+              />
+            </div>
+            <div>
+              <label class="block text-sm font-semibold text-gray-700 mb-3">
+                Last Name 
+                <span class="text-red-400 ml-1">*</span>
+                <span class="inline-block w-3 h-3 rounded-full ml-2 cursor-help" title="Required field"></span>
+              </label>
+              <input 
+                type="text" 
+                value="s"
+                class="form-input w-full px-4 py-3 rounded-xl bg-gray-50 font-medium text-gray-800"
+                placeholder="Enter last name"
+              />
+            </div>
+          </div>
+
+          <!-- Contact Information Section -->
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div>
+              <label class="block text-sm font-semibold text-gray-700 mb-3">
+                Phone 
+                <span class="text-red-400 ml-1">*</span>
+                <span class="inline-block w-3 h-3 rounded-full ml-2 cursor-help" title="Required field"></span>
+              </label>
+              <input 
+                type="tel" 
+                value="8384949292"
+                class="form-input w-full px-4 py-3 rounded-xl bg-gray-50 font-medium text-gray-800"
+                placeholder="Enter phone number"
+              />
+            </div>
+            <div>
+              <label class="block text-sm font-semibold text-gray-700 mb-3">
+                Message Type 
+                <span class="text-red-400 ml-1">*</span>
+                <span class="inline-block w-3 h-3 rounded-full ml-2 cursor-help" title="Required field"></span>
+              </label>
+              <select class="form-input form-select w-full px-4 py-3 rounded-xl bg-gray-50 font-medium text-gray-800 appearance-none cursor-pointer">
+                <option value="one-time" selected>One-Time</option>
+                <option value="recurring">Recurring</option>
+                <option value="conditional">Conditional</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Scheduling Section -->
+          <div>
+            <label class="block text-sm font-semibold text-gray-700 mb-3">
+              Scheduled Delivery after Departure Confirmation 
+              <span class="text-red-400 ml-1">*</span>
+              <span class="inline-block w-3 h-3 rounded-full ml-2 cursor-help" title="Required field"></span>
+            </label>
+            <select class="form-input form-select w-full px-4 py-3 rounded-xl bg-gray-50 font-medium text-gray-800 appearance-none cursor-pointer">
+              <option value="asap" selected>ASAP (72 hours after)</option>
+              <option value="1-week">1 Week After</option>
+              <option value="2-weeks">2 Weeks After</option>
+              <option value="1-month">1 Month After</option>
+              <option value="3-months">3 Months After</option>
+              <option value="6-months">6 Months After</option>
+              <option value="1-year">1 Year After</option>
+            </select>
+          </div>
+
+          <!-- Message Section -->
+          <div>
+            <label class="block text-sm font-semibold text-gray-700 mb-3">
+              Message 
+              <span class="text-red-400 ml-1">*</span>
+            </label>
+            <div class="relative">
+              <textarea 
+                class="form-input w-full px-4 py-3 rounded-xl bg-gray-50 font-medium text-gray-800 min-h-[120px] resize-none"
+                placeholder="Enter your message..."
+              >test msg</textarea>
+              <button type="button" class="absolute bottom-3 right-3 p-2 text-gray-400 hover:text-gray-600 transition-colors">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"></path>
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <!-- Monetary Gift Section -->
+          <div>
+            <label class="block text-sm font-semibold text-gray-700 mb-3">
+              Monetary Gift Amount
+              <span class="inline-block w-3 h-3 rounded-full ml-2 cursor-help" title="Optional field"></span>
+            </label>
+            <div class="relative">
+              <span class="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-500 font-medium">$</span>
+              <input 
+                type="number" 
+                value="100"
+                class="form-input w-full pl-8 pr-12 py-3 rounded-xl bg-gray-50 font-medium text-gray-800"
+                placeholder="0.00"
+                step="0.01"
+                min="0"
+              />
+              <button type="button" class="absolute right-3 top-1/2 transform -translate-y-1/2 p-1 text-gray-400 hover:text-gray-600 transition-colors">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <!-- Alert Section -->
+          <div class="alert-pink rounded-xl p-4 flex items-start space-x-3">
+            <div class="flex-shrink-0 mt-0.5">
+              <svg class="w-5 h-5 text-primary-pink" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L4.082 16.5c-.77.833.192 2.5 1.732 2.5z"></path>
+              </svg>
+            </div>
+            <div class="flex-1">
+              <p class="text-sm font-medium text-gray-800">
+                <span class="font-semibold">Important:</span> Recipients will be texted from 844-996-4241 after Saving. Please inform them prior to Saving.
+              </p>
+            </div>
+          </div>
+
+          <!-- Action Buttons -->
+          <div class="flex items-center justify-between pt-6 border-t border-gray-100">
+            <button 
+              type="button" 
+              class="px-6 py-3 text-gray-600 hover:text-gray-800 font-medium transition-colors rounded-xl hover:bg-gray-50"
+            >
+              Cancel
+            </button>
+            <div class="flex items-center space-x-4">
+              <button 
+                type="button" 
+                class="px-8 py-3 bg-gray-100 hover:bg-gray-200 text-gray-700 font-semibold rounded-xl transition-colors"
+              >
+                Save as Draft
+              </button>
+              <button 
+                type="submit" 
+                class="px-8 py-3 bg-gradient-to-r from-primary-blue to-indigo-600 hover:from-primary-blue hover:to-indigo-700 text-white font-semibold rounded-xl transition-all hover-lift shadow-lg"
+              >
+                Create Ekko
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-white border-t border-gray-200 py-6 mt-auto">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="text-center text-gray-600">
+        2025 © YourEkko. All rights reserved.
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Add smooth hover effects
+    document.querySelectorAll('.hover-lift').forEach(element => {
+      element.addEventListener('mouseenter', () => {
+        element.style.transform = 'translateY(-2px)';
+      });
+      element.addEventListener('mouseleave', () => {
+        element.style.transform = 'translateY(0)';
+      });
+    });
+
+    // Form validation and interactions
+    const form = document.querySelector('form');
+    const inputs = document.querySelectorAll('input[required], select[required], textarea[required]');
+    
+    // Add real-time validation
+    inputs.forEach(input => {
+      input.addEventListener('blur', () => {
+        if (input.value.trim() === '') {
+          input.classList.add('border-red-300');
+          input.classList.remove('border-gray-300');
+        } else {
+          input.classList.remove('border-red-300');
+          input.classList.add('border-green-300');
+        }
+      });
+    });
+
+    // Phone number formatting
+    const phoneInput = document.querySelector('input[type="tel"]');
+    phoneInput.addEventListener('input', (e) => {
+      let value = e.target.value.replace(/\D/g, '');
+      if (value.length >= 6) {
+        value = value.replace(/(\d{3})(\d{3})(\d{4})/, '$1-$2-$3');
+      } else if (value.length >= 3) {
+        value = value.replace(/(\d{3})(\d{0,3})/, '$1-$2');
+      }
+      e.target.value = value;
+    });
+
+    // Close button functionality
+    document.querySelector('.close-btn').addEventListener('click', () => {
+      if (confirm('Are you sure you want to close? Any unsaved changes will be lost.')) {
+        // In a real app, this would navigate back or close the modal
+        console.log('Closing form...');
+      }
+    });
+
+    // Form submission
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      
+      // Collect form data
+      const formData = new FormData(form);
+      const data = Object.fromEntries(formData.entries());
+      
+      // Show success message (in real app, this would be an API call)
+      alert('Ekko created successfully!');
+      console.log('Form data:', data);
+    });
+
+    // Auto-resize textarea
+    const textarea = document.querySelector('textarea');
+    textarea.addEventListener('input', () => {
+      textarea.style.height = 'auto';
+      textarea.style.height = Math.max(120, textarea.scrollHeight) + 'px';
+    });
+
+    // Tooltip functionality for help icons
+    document.querySelectorAll('[title]').forEach(element => {
+      element.addEventListener('mouseenter', (e) => {
+        const tooltip = document.createElement('div');
+        tooltip.className = 'absolute bg-gray-800 text-white text-xs rounded px-2 py-1 z-50 -top-8 left-1/2 transform -translate-x-1/2 whitespace-nowrap';
+        tooltip.textContent = e.target.getAttribute('title');
+        e.target.style.position = 'relative';
+        e.target.appendChild(tooltip);
+      });
+      
+      element.addEventListener('mouseleave', (e) => {
+        const tooltip = e.target.querySelector('.absolute');
+        if (tooltip) tooltip.remove();
+      });
+    });
+  </script>
+</body>
+</html>
