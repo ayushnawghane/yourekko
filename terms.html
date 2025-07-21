@@ -552,18 +552,21 @@
   <script>
     // Tab functionality with enhanced animations
     function setActiveTab(tabName) {
-      // Remove active class from all tabs
+      // Remove all color classes from all tabs
       document.querySelectorAll('.tab-button').forEach(tab => {
-        tab.classList.remove('bg-primary-blue', 'text-white', 'shadow-md');
+        tab.classList.remove(
+          'bg-primary-blue', 'bg-primary-pink', 'bg-primary-green', 'bg-purple-600',
+          'text-white', 'shadow-md', 'text-gray-600'
+        );
         tab.classList.add('text-gray-600');
       });
-      
-      // Hide all tab content with fade effect
+
+      // Hide all tab content
       document.querySelectorAll('.tab-content').forEach(content => {
         content.classList.add('hidden');
-        content.style.opacity = '0';
+        content.style.opacity = '';
       });
-      
+
       // Activate selected tab with specific colors
       const activeTab = document.getElementById(`tab-${tabName}`);
       const colors = {
@@ -572,16 +575,13 @@
         'recipients': ['bg-primary-green', 'text-white'],
         'privacy': ['bg-purple-600', 'text-white']
       };
-      
       activeTab.classList.add(...colors[tabName], 'shadow-md');
       activeTab.classList.remove('text-gray-600');
-      
-      // Show selected content with fade effect
+
+      // Show selected content
       const activeContent = document.getElementById(`content-${tabName}`);
       activeContent.classList.remove('hidden');
-      setTimeout(() => {
-        activeContent.style.opacity = '1';
-      }, 50);
+      activeContent.style.opacity = '1';
     }
 
     // Smooth scroll to section
