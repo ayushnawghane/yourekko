@@ -105,9 +105,18 @@
         <div class="order-2 lg:order-1">
           <div class="relative">
             <div class="absolute -inset-4 bg-primary-pink rounded-3xl opacity-20 blur-2xl"></div>
-            <img src='/discover.jpeg' alt="Platform demo" class="relative w-full rounded-3xl shadow-2xl hover-lift">
+            <video
+              id="ekkoVideo"
+              src="/SITEVIDEOfinal.mp4"
+              class="relative w-full rounded-3xl shadow-2xl hover-lift cursor-pointer"
+              autoplay
+              muted
+              loop
+              playsinline
+            ></video>
           </div>
         </div>
+        
         <div class="order-1 lg:order-2">
           <h2 class="text-4xl lg:text-5xl font-bold text-gray-900 mb-6 flex items-center">
             <img src="/Color1.png" width="40" height="40" alt="" class="mr-2">
@@ -605,6 +614,20 @@
   <div id="footer"></div>
 
   <script>
+
+    const video = document.getElementById('ekkoVideo');
+
+    video.addEventListener('click', () => {
+      if (video.requestFullscreen) {
+        video.requestFullscreen();
+      } else if (video.webkitRequestFullscreen) {
+        video.webkitRequestFullscreen(); // Safari
+      } else if (video.msRequestFullscreen) {
+        video.msRequestFullscreen(); // IE/Edge
+      }
+      // Optional: play the video again in fullscreen (if you paused it earlier)
+      video.play();
+    });
     // FAQ Toggle
     document.querySelectorAll('.faq-question').forEach((question) => {
       question.addEventListener('click', () => {
