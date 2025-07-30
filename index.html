@@ -114,6 +114,14 @@
               loop
               playsinline
             ></video>
+            <button
+              id="toggleVideoBtn"
+              class="absolute bottom-4 right-4 bg-white text-gray-800 p-2 rounded-full shadow-md hover:bg-gray-100 transition"
+              onclick="toggleVideoPlay()"
+            >
+              ⏸️
+            </button>
+
           </div>
         </div>
         
@@ -182,15 +190,17 @@
   <!-- Pricing -->
   <section id="pricing" class="py-20 bg-white">
     <div class="max-w-full mx-auto px-6">
-      <div class="text-center mb-16">
+      <div class="text-center mb-4">
         <h2 class="text-4xl lg:text-5xl font-bold text-gray-900 mb-4 flex items-center justify-center">
           <img src="/Color1.png" width="40" height="40" alt="" class="mr-4">
           <span class="gradient-text">Pricing</span> <span class="ml-2">Options</span>
         </h2>
         <p class="text-xl text-gray-600">Choose the perfect plan for your heartfelt messages</p>
       </div>
-      <div class="grid md:grid-cols-3 gap-8">
-        <!-- Basic Plan -->
+      <div class="flex items-center justify-center">
+        <img src="Encore Package 7.6 (2).png" alt="" width="80%">
+      </div>
+      <!-- <div class="grid md:grid-cols-3 gap-8">
         <div class="bg-white rounded-3xl shadow-xl p-8 border-2 border-gray-100 hover-lift">
           <div class="text-center mb-8">
             <h3 class="text-2xl font-bold text-gray-900 mb-2">Basic Plan</h3>
@@ -221,7 +231,6 @@
           </button>
         </div>
 
-        <!-- Business Plan -->
         <div class="bg-gradient-to-br from-primary-pink to-primary-blue rounded-3xl shadow-2xl p-8 text-white transform scale-105 relative">
           <div class="absolute -top-4 left-1/2 transform -translate-x-1/2">
             <span class="bg-primary-green text-white px-4 py-2 rounded-full text-sm font-semibold">Most Popular</span>
@@ -261,7 +270,6 @@
           </button>
         </div>
 
-        <!-- Enterprise Plan -->
         <div class="bg-white rounded-3xl shadow-xl p-8 border-2 border-gray-100 hover-lift">
           <div class="text-center mb-8">
             <h3 class="text-2xl font-bold text-gray-900 mb-2">Enterprise Plan</h3>
@@ -297,7 +305,7 @@
             Get Started
           </button>
         </div>
-      </div>
+      </div> -->
     </div>
   </section>
 
@@ -615,19 +623,19 @@
 
   <script>
 
-    const video = document.getElementById('ekkoVideo');
+  const video = document.getElementById('ekkoVideo');
+  const toggleBtn = document.getElementById('toggleVideoBtn');
 
-    video.addEventListener('click', () => {
-      if (video.requestFullscreen) {
-        video.requestFullscreen();
-      } else if (video.webkitRequestFullscreen) {
-        video.webkitRequestFullscreen(); // Safari
-      } else if (video.msRequestFullscreen) {
-        video.msRequestFullscreen(); // IE/Edge
-      }
-      // Optional: play the video again in fullscreen (if you paused it earlier)
+  function toggleVideoPlay() {
+    if (video.paused) {
       video.play();
-    });
+      toggleBtn.textContent = '⏸️';
+    } else {
+      video.pause();
+      toggleBtn.textContent = '▶️';
+    }
+  }
+
     // FAQ Toggle
     document.querySelectorAll('.faq-question').forEach((question) => {
       question.addEventListener('click', () => {
@@ -714,5 +722,6 @@
     // Load footer
     includeHTML('footer', '/src/footer.html');
   </script>
+  
 </body>
 </html>
