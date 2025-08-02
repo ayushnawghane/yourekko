@@ -27,6 +27,7 @@
       }
     }
   </script>
+
   <style>
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(20px); }
@@ -60,6 +61,109 @@
     .hover-lift:hover {
       transform: translateY(-5px);
       box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    }
+    /* Enhanced Video Player Styles */
+    .video-container {
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .video-controls {
+      position: absolute;
+      bottom: 12px;
+      right: 12px;
+      display: flex;
+      gap: 8px;
+      background: rgba(0, 0, 0, 0.7);
+      backdrop-filter: blur(8px);
+      border-radius: 24px;
+      padding: 8px 12px;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      pointer-events: none;
+    }
+    
+    .video-container:hover .video-controls {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .control-btn {
+      background: rgba(255, 255, 255, 0.2);
+      border: none;
+      border-radius: 50%;
+      width: 32px;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      color: white;
+      font-size: 14px;
+    }
+
+    .control-btn:hover {
+      background: rgba(255, 255, 255, 0.3);
+      transform: scale(1.1);
+    }
+
+    .volume-slider {
+      width: 60px;
+      height: 4px;
+      background: rgba(255, 255, 255, 0.3);
+      border-radius: 2px;
+      outline: none;
+      margin: 0 4px;
+      align-self: center;
+    }
+
+    .volume-slider::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: white;
+      cursor: pointer;
+    }
+
+    .volume-slider::-moz-range-thumb {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: white;
+      cursor: pointer;
+      border: none;
+    }
+
+    /* Volume controls container */
+    .volume-controls {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    /* Fullscreen styles */
+    .video-container.fullscreen {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: 9999;
+      background: black;
+    }
+
+    .video-container.fullscreen video {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    .video-container.fullscreen .video-controls {
+      bottom: 20px;
+      right: 20px;
     }
   </style>
 </head>
@@ -98,30 +202,52 @@
     </div>
   </section>
 
-  <!-- Discover Section -->
+  <!-- Discover Section with Enhanced Video Player -->
   <section class="py-20 bg-white">
     <div class="max-w-full mx-auto px-6">
       <div class="grid lg:grid-cols-2 gap-12 items-center">
         <div class="order-2 lg:order-1">
           <div class="relative">
             <div class="absolute -inset-4 bg-primary-pink rounded-3xl opacity-20 blur-2xl"></div>
-            <video
-              id="ekkoVideo"
-              src="/SITEVIDEOfinal.mp4"
-              class="relative w-full rounded-3xl shadow-2xl hover-lift cursor-pointer"
-              autoplay
-              muted
-              loop
-              playsinline
-            ></video>
-            <button
-              id="toggleVideoBtn"
-              class="absolute bottom-4 right-4 bg-white text-gray-800 p-2 rounded-full shadow-md hover:bg-gray-100 transition"
-              onclick="toggleVideoPlay()"
-            >
-              ⏸️
-            </button>
-
+            <div class="video-container relative rounded-3xl overflow-hidden shadow-2xl hover-lift cursor-pointer">
+              <video
+                id="ekkoVideo"
+                src="/SITEVIDEOfinal.mp4"
+                class="w-full rounded-3xl"
+                autoplay
+                loop
+                playsinline
+              ></video>
+              
+              <div class="video-controls">
+                <!-- Play/Pause Button -->
+                <button id="playPauseBtn" class="control-btn" onclick="toggleVideoPlay()" title="Play/Pause">
+                  ⏸️
+                </button>
+                
+                <!-- Volume Controls -->
+                <div class="volume-controls">
+                  <button id="muteBtn" class="control-btn" onclick="toggleMute()" title="Mute/Unmute">
+                    🔊
+                  </button>
+                  <input 
+                    type="range" 
+                    id="volumeSlider" 
+                    class="volume-slider"
+                    min="0" 
+                    max="100" 
+                    value="0"
+                    onchange="changeVolume()"
+                    title="Volume"
+                  />
+                </div>
+                
+                <!-- Fullscreen Button -->
+                <button id="fullscreenBtn" class="control-btn" onclick="toggleFullscreen()" title="Fullscreen">
+                  ⛶
+                </button>
+              </div>
+            </div>
           </div>
         </div>
         
@@ -138,9 +264,6 @@
             <button class="gradient-bg text-white px-8 py-3 rounded-full font-semibold hover:opacity-90 transition-all hover-lift" onclick="window.location.href='/contact.html'">
               Learn More
             </button>
-            <!-- <button class="text-primary-pink border-2 border-primary-pink px-8 py-3 rounded-full font-semibold hover:bg-primary-pink hover:text-white transition-all">
-              Watch Demo
-            </button> -->
           </div>
         </div>
       </div>
@@ -622,20 +745,113 @@
   <div id="footer"></div>
 
   <script>
+     const video = document.getElementById('ekkoVideo');
+    const playPauseBtn = document.getElementById('playPauseBtn');
+    const muteBtn = document.getElementById('muteBtn');
+    const volumeSlider = document.getElementById('volumeSlider');
+    const fullscreenBtn = document.getElementById('fullscreenBtn');
+    const videoContainer = document.querySelector('.video-container');
 
-  const video = document.getElementById('ekkoVideo');
-  const toggleBtn = document.getElementById('toggleVideoBtn');
+    // Initialize volume slider with current video volume (muted by default)
+    volumeSlider.value = video.volume * 100;
 
-  function toggleVideoPlay() {
-    if (video.paused) {
-      video.play();
-      toggleBtn.textContent = '⏸️';
-    } else {
-      video.pause();
-      toggleBtn.textContent = '▶️';
+    function toggleVideoPlay() {
+      if (video.paused) {
+        video.play();
+        playPauseBtn.textContent = '⏸️';
+      } else {
+        video.pause();
+        playPauseBtn.textContent = '▶️';
+      }
     }
-  }
 
+    function toggleMute() {
+      if (video.muted) {
+        video.muted = false;
+        muteBtn.textContent = video.volume > 0.5 ? '🔊' : '🔉';
+        volumeSlider.value = video.volume * 100;
+      } else {
+        video.muted = true;
+        muteBtn.textContent = '🔇';
+      }
+    }
+
+    function changeVolume() {
+      const volume = volumeSlider.value / 100;
+      video.volume = volume;
+      video.muted = false;
+      
+      // Update mute button icon based on volume level
+      if (volume === 0) {
+        muteBtn.textContent = '🔇';
+        video.muted = true;
+      } else if (volume < 0.5) {
+        muteBtn.textContent = '🔉';
+      } else {
+        muteBtn.textContent = '🔊';
+      }
+    }
+
+    function toggleFullscreen() {
+      if (!document.fullscreenElement) {
+        videoContainer.classList.add('fullscreen');
+        videoContainer.requestFullscreen().catch(err => {
+          console.log('Error attempting to enable fullscreen:', err);
+        });
+      } else {
+        videoContainer.classList.remove('fullscreen');
+        document.exitFullscreen();
+      }
+    }
+
+    // Listen for fullscreen changes
+    document.addEventListener('fullscreenchange', () => {
+      if (!document.fullscreenElement) {
+        videoContainer.classList.remove('fullscreen');
+      }
+    });
+
+    // Update play/pause button when video ends
+    video.addEventListener('ended', () => {
+      playPauseBtn.textContent = '▶️';
+    });
+
+    // Update volume slider when volume changes programmatically
+    video.addEventListener('volumechange', () => {
+      if (!video.muted) {
+        volumeSlider.value = video.volume * 100;
+      }
+    });
+
+    // Show/hide controls on hover with better UX
+    videoContainer.addEventListener('mouseenter', () => {
+      clearTimeout(controlsTimeout);
+      document.querySelector('.video-controls').style.opacity = '1';
+      document.querySelector('.video-controls').style.pointerEvents = 'auto';
+    });
+    
+    videoContainer.addEventListener('mouseleave', () => {
+      controlsTimeout = setTimeout(() => {
+        document.querySelector('.video-controls').style.opacity = '0';
+        document.querySelector('.video-controls').style.pointerEvents = 'none';
+      }, 1000);
+    });
+
+    // Keep controls visible when hovering over them
+    document.querySelector('.video-controls').addEventListener('mouseenter', () => {
+      clearTimeout(controlsTimeout);
+    });
+
+    document.querySelector('.video-controls').addEventListener('mouseleave', () => {
+      controlsTimeout = setTimeout(() => {
+        document.querySelector('.video-controls').style.opacity = '0';
+        document.querySelector('.video-controls').style.pointerEvents = 'none';
+      }, 1000);
+    });
+  </script>
+
+
+  <script>
     // FAQ Toggle
     document.querySelectorAll('.faq-question').forEach((question) => {
       question.addEventListener('click', () => {
