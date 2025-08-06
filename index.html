@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>YourEkko – Connect with Loved Ones</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://vjs.zencdn.net/8.10.0/video-js.css" rel="stylesheet" />
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -27,7 +28,11 @@
       }
     }
   </script>
+<!-- Plyr CSS -->
+<link rel="stylesheet" href="https://cdn.plyr.io/3.7.8/plyr.css" />
 
+<!-- Plyr JS -->
+<script src="https://cdn.plyr.io/3.7.8/plyr.js"></script>
   <style>
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(20px); }
@@ -62,8 +67,8 @@
       transform: translateY(-5px);
       box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
     }
-    /* Enhanced Video Player Styles */
-    .video-container {
+        /* Enhanced Video Player Styles */
+        .video-container {
       position: relative;
       overflow: hidden;
     }
@@ -74,13 +79,14 @@
       right: 12px;
       display: flex;
       gap: 8px;
-      background: rgba(0, 0, 0, 0.7);
+      background: rgba(0, 0, 0, 0.8);
       backdrop-filter: blur(8px);
       border-radius: 24px;
       padding: 8px 12px;
       opacity: 0;
       transition: opacity 0.3s ease;
       pointer-events: none;
+      z-index: 10;
     }
     
     .video-container:hover .video-controls {
@@ -164,6 +170,14 @@
     .video-container.fullscreen .video-controls {
       bottom: 20px;
       right: 20px;
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    /* Always show controls in fullscreen */
+    .video-container.fullscreen:hover .video-controls {
+      opacity: 1;
+      pointer-events: auto;
     }
   </style>
 </head>
@@ -210,43 +224,15 @@
           <div class="relative">
             <div class="absolute -inset-4 bg-primary-pink rounded-3xl opacity-20 blur-2xl"></div>
             <div class="video-container relative rounded-3xl overflow-hidden shadow-2xl hover-lift cursor-pointer">
-              <video
-                id="ekkoVideo"
-                src="/SITEVIDEOfinal.mp4"
-                class="w-full rounded-3xl"
-                autoplay
-                loop
-                playsinline
-              ></video>
-              
-              <div class="video-controls">
-                <!-- Play/Pause Button -->
-                <button id="playPauseBtn" class="control-btn" onclick="toggleVideoPlay()" title="Play/Pause">
-                  ⏸️
-                </button>
-                
-                <!-- Volume Controls -->
-                <div class="volume-controls">
-                  <button id="muteBtn" class="control-btn" onclick="toggleMute()" title="Mute/Unmute">
-                    🔊
-                  </button>
-                  <input 
-                    type="range" 
-                    id="volumeSlider" 
-                    class="volume-slider"
-                    min="0" 
-                    max="100" 
-                    value="0"
-                    onchange="changeVolume()"
-                    title="Volume"
-                  />
-                </div>
-                
-                <!-- Fullscreen Button -->
-                <button id="fullscreenBtn" class="control-btn" onclick="toggleFullscreen()" title="Fullscreen">
-                  ⛶
-                </button>
+              <div class="plyr__video-embed" id="ekkoVideoPlayer">
+                <iframe
+                  src="SITEVIDEOfinal.mp4"
+                  allowfullscreen
+                  allowtransparency
+                  allow="autoplay"
+                ></iframe>
               </div>
+          
             </div>
           </div>
         </div>
@@ -255,13 +241,13 @@
           <h2 class="text-4xl lg:text-5xl font-bold text-gray-900 mb-6 flex items-center">
             <img src="/Color1.png" width="40" height="40" alt="" class="mr-2">
             Welcome to
-            <span class="gradient-text  ml-2">YourEkko</span>
+            <span class="gradient-text ml-2">YourEkko</span>
           </h2>
           <p class="text-lg text-gray-600 mb-8 leading-relaxed">
             YourEkko is a unique platform that allows you to create and schedule heartfelt messages for your loved ones, ensuring your words of care and support transcend time. With our intuitive interface, you can craft meaningful Ekko messages that deliver exactly when and how you need them.
           </p>
           <div class="flex flex-col sm:flex-row gap-4">
-            <button class="gradient-bg text-white px-8 py-3 rounded-full font-semibold hover:opacity-90 transition-all hover-lift" onclick="window.location.href='/contact.html'">
+            <button class="gradient-bg text-white px-8 py-3 rounded-full font-semibold hover:opacity-90 transition-all hover-lift" onclick="enableAudio()">
               Learn More
             </button>
           </div>
@@ -269,6 +255,7 @@
       </div>
     </div>
   </section>
+
 
   <!-- How It Works -->
   <section class="py-20 bg-gradient-to-br from-gray-50 to-blue-50">
@@ -639,240 +626,164 @@
         <div class="grid lg:grid-cols-2 gap-8 mb-12">
           <div class="space-y-6">
             
-              <!-- What is YourEkko? -->
-              <div class="faq-card bg-white rounded-2xl shadow-lg p-6">
-                <button class="faq-question w-full text-left flex items-center justify-between group">
-                    <h3 class="text-xl font-semibold text-gray-900 group-hover:text-blue-600 transition-colors">What is YourEkko?</h3>
-                    <div class="flex-shrink-0 ml-4">
-                        <svg class="w-6 h-6 text-blue-600 transition-transform faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                        </svg>
-                    </div>
-                </button>
-                <div class="faq-answer mt-4">
-                    <p class="text-gray-600 leading-relaxed">YourEkko is a platform that allows you to create meaningful posthumous messages for your loved ones. With our service, you can schedule these heartfelt messages to be sent at the right moment. It's a way to keep connections alive, even after parting.</p>
-                </div>
-            </div>
+                        <!-- Do Recipients know what their Ekko message says? -->
+                        <div class="faq-card bg-white rounded-2xl shadow-lg p-6">
+                          <button class="faq-question w-full text-left flex items-center justify-between group">
+                              <h3 class="text-xl font-semibold text-gray-900 group-hover:text-pink-600 transition-colors">Do Recipients know what their Ekko message says?</h3>
+                              <div class="flex-shrink-0 ml-4">
+                                  <svg class="w-6 h-6 text-pink-600 transition-transform faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                  </svg>
+                              </div>
+                          </button>
+                          <div class="faq-answer mt-4">
+                              <p class="text-gray-600 leading-relaxed">Context of the Ekko messages are between the User and their Recipient. After the User saves the Ekko, Recipients will be notified to opt-in to receive. Upon User departure, Recipients will opt-in again but have options to opt-out.</p>
+                          </div>
+                      </div>
+                      <!--What options do Recipients have?-->
+                        <div class="faq-card bg-white rounded-2xl shadow-lg p-6">
+                          <button class="faq-question w-full text-left flex items-center justify-between group">
+                              <h3 class="text-xl font-semibold text-gray-900 group-hover:text-blue-600 transition-colors">What options do Recipients have?</h3>
+                              <div class="flex-shrink-0 ml-4">
+                                  <svg class="w-6 h-6 text-blue-600 transition-transform faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                  </svg>
+                              </div>
+                          </button>
+                          <div class="faq-answer mt-4">
+                              <p class="text-gray-600 leading-relaxed">1) View future send dates and Ekko types.
+                                2) Pause Ekkos 
+                                NOTE: Paused Ekkos with or without money are stored for 365 days from pause date and can be un-paused by contacting support@yourekko.com
+                            </p>
+                          </div>
+                      </div>
 
-            <!-- What are Ekkoes? -->
-            <div class="faq-card bg-white rounded-2xl shadow-lg p-6">
-                <button class="faq-question w-full text-left flex items-center justify-between group">
-                    <h3 class="text-xl font-semibold text-gray-900 group-hover:text-blue-600 transition-colors">What are Ekkoes?</h3>
-                    <div class="flex-shrink-0 ml-4">
-                        <svg class="w-6 h-6 text-blue-600 transition-transform faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                        </svg>
-                    </div>
-                </button>
-                <div class="faq-answer mt-4">
-                    <p class="text-gray-600 leading-relaxed">Ekkoes are heartfelt messages you create for your loved ones to be sent posthumously. They can include personal stories, memories, or simply expressions of love. Each Ekko is a unique way to honor and remember.</p>
-                </div>
-            </div>
-
-            <!-- What are the differences between One-time Ekko and Recurring Ekko? -->
-            <div class="faq-card bg-white rounded-2xl shadow-lg p-6">
-                <button class="faq-question w-full text-left flex items-center justify-between group">
-                    <h3 class="text-xl font-semibold text-gray-900 group-hover:text-blue-600 transition-colors">What are the differences between One-time Ekko and Recurring Ekko?</h3>
-                    <div class="flex-shrink-0 ml-4">
-                        <svg class="w-6 h-6 text-blue-600 transition-transform faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                        </svg>
-                    </div>
-                </button>
-                <div class="faq-answer mt-4">
-                    <div class="text-gray-600 leading-relaxed space-y-3">
-                        <p><strong>One-time Ekkos:</strong> Allow you to schedule a date and time for delivery after we confirm departure. 700 characters max. Include an optional monetary gift between $10-$1000 for your recipient to claim with their email upon receiving the Ekko.</p>
-                        <p><strong>Recurring Ekkos:</strong> Can be scheduled to be sent up to 3 years every day, one day per week, one day per month or one day per year. 60 characters max.</p>
-                        <p>All Ekkos send around 12pm EST unless it is a One-time Ekko with a designated time.</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- How to create Ekkoes? -->
-            <div class="faq-card bg-white rounded-2xl shadow-lg p-6">
-                <button class="faq-question w-full text-left flex items-center justify-between group">
-                    <h3 class="text-xl font-semibold text-gray-900 group-hover:text-blue-600 transition-colors">How to create Ekkoes?</h3>
-                    <div class="flex-shrink-0 ml-4">
-                        <svg class="w-6 h-6 text-blue-600 transition-transform faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                        </svg>
-                    </div>
-                </button>
-                <div class="faq-answer mt-4">
-                    <p class="text-gray-600 leading-relaxed">Creating Ekkoes is simple! Just sign up, choose a message type, and personalize it. You can schedule it for any future date, ensuring your sentiments reach your loved ones when it matters most.</p>
-                </div>
-            </div>
-
-            <!-- Is it secure? -->
-            <div class="faq-card bg-white rounded-2xl shadow-lg p-6">
-                <button class="faq-question w-full text-left flex items-center justify-between group">
-                    <h3 class="text-xl font-semibold text-gray-900 group-hover:text-blue-600 transition-colors">Is it secure?</h3>
-                    <div class="flex-shrink-0 ml-4">
-                        <svg class="w-6 h-6 text-blue-600 transition-transform faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                        </svg>
-                    </div>
-                </button>
-                <div class="faq-answer mt-4">
-                    <p class="text-gray-600 leading-relaxed">Absolutely! YourEkko prioritizes your privacy and data security. We use advanced encryption methods to ensure that your messages and personal information are protected.</p>
-                </div>
-            </div>
-
-            <!-- Can I edit messages? -->
-            <div class="faq-card bg-white rounded-2xl shadow-lg p-6">
-                <button class="faq-question w-full text-left flex items-center justify-between group">
-                    <h3 class="text-xl font-semibold text-gray-900 group-hover:text-blue-600 transition-colors">Can I edit messages?</h3>
-                    <div class="flex-shrink-0 ml-4">
-                        <svg class="w-6 h-6 text-blue-600 transition-transform faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                        </svg>
-                    </div>
-                </button>
-                <div class="faq-answer mt-4">
-                    <p class="text-gray-600 leading-relaxed">Yes, you can edit your messages anytime before they are scheduled to be sent. Simply log in to your account and make the necessary changes. We want to ensure your messages are just right.</p>
-                </div>
-            </div>
-
-            <!-- What if I want to cancel my Ekko plans? -->
-            <div class="faq-card bg-white rounded-2xl shadow-lg p-6">
-                <button class="faq-question w-full text-left flex items-center justify-between group">
-                    <h3 class="text-xl font-semibold text-gray-900 group-hover:text-blue-600 transition-colors">What if I want to cancel my Ekko plans?</h3>
-                    <div class="flex-shrink-0 ml-4">
-                        <svg class="w-6 h-6 text-blue-600 transition-transform faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                        </svg>
-                    </div>
-                </button>
-                <div class="faq-answer mt-4">
-                    <p class="text-gray-600 leading-relaxed">Email support@yourekko.com or call 888-704-0665. Only monetary gift amounts are returned - all Ekkos will be deleted.</p>
-                </div>
-            </div>
-
-            <!-- What if Trusted Contact(s) are unreachable? -->
-            <div class="faq-card bg-white rounded-2xl shadow-lg p-6">
-              <button class="faq-question w-full text-left flex items-center justify-between group">
-                  <h3 class="text-xl font-semibold text-gray-900 group-hover:text-pink-600 transition-colors">What if Trusted Contact(s) are unreachable?</h3>
-                  <div class="flex-shrink-0 ml-4">
-                      <svg class="w-6 h-6 text-pink-600 transition-transform faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                      </svg>
-                  </div>
-              </button>
-              <div class="faq-answer mt-4">
-                  <p class="text-gray-600 leading-relaxed">Ekko Recipients will be contacted. Ekkos with money that Recipients do not claim after 365 days from initial contact, will go to OSUCCC-The James.</p>
-              </div>
-          </div>
+                      <!-- Adjust Recurring Ekkos -->
+                      <div class="faq-card bg-white rounded-2xl shadow-lg p-6">
+                          <button class="faq-question w-full text-left flex items-center justify-between group">
+                              <h3 class="text-xl font-semibold text-gray-900 group-hover:text-blue-600 transition-colors">Adjust Recurring Ekkos</h3>
+                              <div class="flex-shrink-0 ml-4">
+                                  <svg class="w-6 h-6 text-blue-600 transition-transform faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                  </svg>
+                              </div>
+                          </button>
+                          <div class="faq-answer mt-4">
+                              <p class="text-gray-600 leading-relaxed">Call 888-704-0665
+                                <br> NOTE - If STOP (opt-out) is texted in reply and more Ekko messages have yet to send, with or without money, they will be stored for 365 days from the STOP date. To retrieve remaining Ekkos, contact support@yourekko.com
+                            .</p>
+                          </div>
+                      </div>
+                      <!-- What if Trusted Contact(s) are unreachable? -->
+                      <div class="faq-card bg-white rounded-2xl shadow-lg p-6">
+                        <button class="faq-question w-full text-left flex items-center justify-between group">
+                            <h3 class="text-xl font-semibold text-gray-900 group-hover:text-pink-600 transition-colors">What if Trusted Contact(s) are unreachable?</h3>
+                            <div class="flex-shrink-0 ml-4">
+                                <svg class="w-6 h-6 text-pink-600 transition-transform faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                </svg>
+                            </div>
+                        </button>
+                        <div class="faq-answer mt-4">
+                            <p class="text-gray-600 leading-relaxed">Ekko Recipients will be contacted. Ekkos with money that Recipients do not claim after 365 days from initial contact, will go to OSUCCC-The James.</p>
+                        </div>
+                      </div>
   
-          </div>
+                                            <!-- What if a Recipient phone number changes after a User has passed away? -->
+                                            <div class="faq-card bg-white rounded-2xl shadow-lg p-6">
+                                              <button class="faq-question w-full text-left flex items-center justify-between group">
+                                                  <h3 class="text-xl font-semibold text-gray-900 group-hover:text-pink-600 transition-colors">What if a Recipient phone number changes after a User has passed away?</h3>
+                                                  <div class="flex-shrink-0 ml-4">
+                                                      <svg class="w-6 h-6 text-pink-600 transition-transform faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                                      </svg>
+                                                  </div>
+                                              </button>
+                                              <div class="faq-answer mt-4">
+                                                  <p class="text-gray-600 leading-relaxed">Recipient should contact their phone carrier and have them email support@yourekko.com with the updated number. </p>
+                                              </div>
+                                            </div>
+                      <!-- Why wouldn’t I use a device to have someone pass along saved messages? -->
+                      <div class="faq-card bg-white rounded-2xl shadow-lg p-6">
+                        <button class="faq-question w-full text-left flex items-center justify-between group">
+                            <h3 class="text-xl font-semibold text-gray-900 group-hover:text-blue-600 transition-colors">Why wouldn’t I use a device to have someone pass along saved messages?</h3>
+                            <div class="flex-shrink-0 ml-4">
+                                <svg class="w-6 h-6 text-blue-600 transition-transform faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                </svg>
+                            </div>
+                        </button>
+                        <div class="faq-answer mt-4">
+                            <p class="text-gray-600 leading-relaxed">High risk and liability to the messages and whoever would distribute i.e. the executor. A device could be destroyed, lost, incompatible with future devices, the password could be lost, the executor could pass away and forget.</p>
+                        </div>
+                    </div>
+                                          </div>
   
           <!-- Right Column FAQs -->
           <div class="space-y-6">
   
-              <!-- How much does it cost? -->
-              <div class="faq-card bg-white rounded-2xl shadow-lg p-6">
-                <button class="faq-question w-full text-left flex items-center justify-between group">
-                    <h3 class="text-xl font-semibold text-gray-900 group-hover:text-pink-600 transition-colors">How much does it cost?</h3>
-                    <div class="flex-shrink-0 ml-4">
-                        <svg class="w-6 h-6 text-pink-600 transition-transform faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                        </svg>
-                    </div>
-                </button>
-                <div class="faq-answer mt-4">
-                    <p class="text-gray-600 leading-relaxed">YourEkko offers various subscription plans, including a free tier to get started. Paid plans provide additional features and benefits. You can choose the plan that best fits your needs.</p>
-                </div>
-            </div>
 
-            <!-- Can I cancel anytime? -->
-            <div class="faq-card bg-white rounded-2xl shadow-lg p-6">
-                <button class="faq-question w-full text-left flex items-center justify-between group">
-                    <h3 class="text-xl font-semibold text-gray-900 group-hover:text-pink-600 transition-colors">Can I cancel anytime?</h3>
-                    <div class="flex-shrink-0 ml-4">
-                        <svg class="w-6 h-6 text-pink-600 transition-transform faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                        </svg>
-                    </div>
-                </button>
-                <div class="faq-answer mt-4">
-                    <p class="text-gray-600 leading-relaxed">Yes, you can cancel your subscription at any time without any penalties. Just go to your account settings and follow the cancellation process. We want you to feel in control.</p>
-                </div>
-            </div>
+                        <!-- What are the differences between One-time Ekko and Recurring Ekko? -->
+                        <div class="faq-card bg-white rounded-2xl shadow-lg p-6">
+                          <button class="faq-question w-full text-left flex items-center justify-between group">
+                              <h3 class="text-xl font-semibold text-gray-900 group-hover:text-blue-600 transition-colors">What are the differences between One-time Ekko and Recurring Ekko?</h3>
+                              <div class="flex-shrink-0 ml-4">
+                                  <svg class="w-6 h-6 text-blue-600 transition-transform faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                  </svg>
+                              </div>
+                          </button>
+                          <div class="faq-answer mt-4">
+                              <div class="text-gray-600 leading-relaxed space-y-3">
+                                  <p><strong>One-time Ekkos:</strong> Allow you to schedule a date and time for delivery after we confirm departure. 700 characters max. Include an optional monetary gift between $10-$1000 for your recipient to claim with their email upon receiving the Ekko.</p>
+                                  <p><strong>Recurring Ekkos:</strong> Can be scheduled to be sent up to 3 years every day, one day per week, one day per month or one day per year. 60 characters max.</p>
+                                  <p>All Ekkos send around 12pm EST unless it is a One-time Ekko with a designated time.</p>
+                              </div>
+                          </div>
+                      </div>
+                        <!-- What if I want to cancel my Ekko plans? -->
+                        <div class="faq-card bg-white rounded-2xl shadow-lg p-6">
+                          <button class="faq-question w-full text-left flex items-center justify-between group">
+                              <h3 class="text-xl font-semibold text-gray-900 group-hover:text-pink-600 transition-colors">What if I want to cancel my Ekko plans?</h3>
+                              <div class="flex-shrink-0 ml-4">
+                                  <svg class="w-6 h-6 text-pink-600 transition-transform faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                  </svg>
+                              </div>
+                          </button>
+                          <div class="faq-answer mt-4">
+                              <p class="text-gray-600 leading-relaxed">Email support@yourekko.com or call 888-704-0665. Only monetary gift amounts are returned - all Ekkos will be deleted.</p>
+                          </div>
+                      </div>
 
-            <!-- How do I sign up? -->
-            <div class="faq-card bg-white rounded-2xl shadow-lg p-6">
-                <button class="faq-question w-full text-left flex items-center justify-between group">
-                    <h3 class="text-xl font-semibold text-gray-900 group-hover:text-pink-600 transition-colors">How do I sign up?</h3>
-                    <div class="flex-shrink-0 ml-4">
-                        <svg class="w-6 h-6 text-pink-600 transition-transform faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                        </svg>
-                    </div>
-                </button>
-                <div class="faq-answer mt-4">
-                    <p class="text-gray-600 leading-relaxed">Signing up is easy! Visit our homepage and click on the 'Start for Free' button. Fill out the required information, and you'll be on your way to creating your first Ekko.</p>
-                </div>
-            </div>
-
-            <!-- Can I share Ekkoes? -->
-            <div class="faq-card bg-white rounded-2xl shadow-lg p-6">
-                <button class="faq-question w-full text-left flex items-center justify-between group">
-                    <h3 class="text-xl font-semibold text-gray-900 group-hover:text-pink-600 transition-colors">Can I share Ekkoes?</h3>
-                    <div class="flex-shrink-0 ml-4">
-                        <svg class="w-6 h-6 text-pink-600 transition-transform faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                        </svg>
-                    </div>
-                </button>
-                <div class="faq-answer mt-4">
-                    <p class="text-gray-600 leading-relaxed">Yes, you can share your Ekkoes with family and friends. You have the option to send them via email or through our platform to keep it thoughtful and involve others in your message.</p>
-                </div>
-            </div>
-
-            <!-- What if I forget? -->
-            <div class="faq-card bg-white rounded-2xl shadow-lg p-6">
-                <button class="faq-question w-full text-left flex items-center justify-between group">
-                    <h3 class="text-xl font-semibold text-gray-900 group-hover:text-pink-600 transition-colors">What if I forget?</h3>
-                    <div class="flex-shrink-0 ml-4">
-                        <svg class="w-6 h-6 text-pink-600 transition-transform faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                        </svg>
-                    </div>
-                </button>
-                <div class="faq-answer mt-4">
-                    <p class="text-gray-600 leading-relaxed">If you forget your scheduled Ekkoes, don't worry! We send reminders to your email before the messages are sent. You can always log in to check your scheduled messages.</p>
-                </div>
-            </div>
-
-            <!-- What if I'm alive when a One-time Ekko message is scheduled? -->
-            <div class="faq-card bg-white rounded-2xl shadow-lg p-6">
-                <button class="faq-question w-full text-left flex items-center justify-between group">
-                    <h3 class="text-xl font-semibold text-gray-900 group-hover:text-pink-600 transition-colors">What if I'm alive when a One-time Ekko message is scheduled?</h3>
-                    <div class="flex-shrink-0 ml-4">
-                        <svg class="w-6 h-6 text-pink-600 transition-transform faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                        </svg>
-                    </div>
-                </button>
-                <div class="faq-answer mt-4">
-                    <p class="text-gray-600 leading-relaxed">The User account will pause and reach out to the User or Trusted Contacts to confirm if the User is alive.</p>
-                </div>
-            </div>
-
-            <!-- What if Recipients do not reply when actions are needed to receive Ekkos? -->
-            <div class="faq-card bg-white rounded-2xl shadow-lg p-6">
-                <button class="faq-question w-full text-left flex items-center justify-between group">
-                    <h3 class="text-xl font-semibold text-gray-900 group-hover:text-pink-600 transition-colors">What if Recipients do not reply when actions are needed to receive Ekkos?</h3>
-                    <div class="flex-shrink-0 ml-4">
-                        <svg class="w-6 h-6 text-pink-600 transition-transform faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                        </svg>
-                    </div>
-                </button>
-                <div class="faq-answer mt-4">
-                    <p class="text-gray-600 leading-relaxed">Ekkos will be saved for up to 365 days.</p>
-                </div>
-            </div>
-
+                      <!-- What if I’m alive when a One-time Ekko message is scheduled?  -->
+                      <div class="faq-card bg-white rounded-2xl shadow-lg p-6">
+                          <button class="faq-question w-full text-left flex items-center justify-between group">
+                              <h3 class="text-xl font-semibold text-gray-900 group-hover:text-pink-600 transition-colors">What if I’m alive when a One-time Ekko message is scheduled? </h3>
+                              <div class="flex-shrink-0 ml-4">
+                                  <svg class="w-6 h-6 text-pink-600 transition-transform faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                  </svg>
+                              </div>
+                          </button>
+                          <div class="faq-answer mt-4">
+                              <p class="text-gray-600 leading-relaxed">The User account will pause and reach out to the User or Trusted Contacts to confirm if the User is alive.</p>
+                          </div>
+                      </div>
+                          <!-- What if Recipients do not reply when actions are needed to receive Ekkos? -->
+                          <div class="faq-card bg-white rounded-2xl shadow-lg p-6">
+                            <button class="faq-question w-full text-left flex items-center justify-between group">
+                                <h3 class="text-xl font-semibold text-gray-900 group-hover:text-pink-600 transition-colors">What if Recipients do not reply when actions are needed to receive Ekkos?</h3>
+                                <div class="flex-shrink-0 ml-4">
+                                    <svg class="w-6 h-6 text-pink-600 transition-transform faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                    </svg>
+                                </div>
+                            </button>
+                            <div class="faq-answer mt-4">
+                                <p class="text-gray-600 leading-relaxed">Ekkos will be saved for up to 365 days.</p>
+                            </div>
+                        </div>
             <!-- Can a Recipient request Ekkos prior to scheduled delivery date(s)? -->
             <div class="faq-card bg-white rounded-2xl shadow-lg p-6">
                 <button class="faq-question w-full text-left flex items-center justify-between group">
@@ -885,21 +796,6 @@
                 </button>
                 <div class="faq-answer mt-4">
                     <p class="text-gray-600 leading-relaxed">Yes - a Recipient can contact support@yourekko.com to receive Ekko(s) with or without money, before the delivery dates, however, there is a waiting period.</p>
-                </div>
-            </div>
-
-            <!-- Do Recipients know what their Ekko message says? -->
-            <div class="faq-card bg-white rounded-2xl shadow-lg p-6">
-                <button class="faq-question w-full text-left flex items-center justify-between group">
-                    <h3 class="text-xl font-semibold text-gray-900 group-hover:text-pink-600 transition-colors">Do Recipients know what their Ekko message says?</h3>
-                    <div class="flex-shrink-0 ml-4">
-                        <svg class="w-6 h-6 text-pink-600 transition-transform faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                        </svg>
-                    </div>
-                </button>
-                <div class="faq-answer mt-4">
-                    <p class="text-gray-600 leading-relaxed">Context of the Ekko messages are between the User and their Recipient. After the User saves the Ekko, Recipients will be notified to opt-in to receive. Upon User departure, Recipients will opt-in again but have options to opt-out.</p>
                 </div>
             </div>
 
@@ -952,22 +848,58 @@
   </section>
 
   <div id="footer"></div>
-
   <script>
-     const video = document.getElementById('ekkoVideo');
+    // Video control variables
+    const video = document.getElementById('ekkoVideo');
     const playPauseBtn = document.getElementById('playPauseBtn');
     const muteBtn = document.getElementById('muteBtn');
     const volumeSlider = document.getElementById('volumeSlider');
     const fullscreenBtn = document.getElementById('fullscreenBtn');
     const videoContainer = document.querySelector('.video-container');
+    let controlsTimeout;
 
-    // Initialize volume slider with current video volume (muted by default)
-    volumeSlider.value = video.volume * 100;
+    video.addEventListener('loadedmetadata', () => {
+      // Set initial volume to 50% but don't force mute
+      video.volume = 0.5;
+      volumeSlider.value = 50;
+      muteBtn.textContent = '🔉';
+      
+      // Try to play the video with sound (may not work due to autoplay policies)
+      const playPromise = video.play();
+      
+      if (playPromise !== undefined) {
+        playPromise.then(() => {
+          playPauseBtn.textContent = '⏸️';
+          console.log('Video autoplay successful');
+        }).catch((error) => {
+          console.log('Autoplay failed:', error);
+          // If autoplay with sound fails, try muted autoplay
+          video.muted = true;
+          video.play().then(() => {
+            playPauseBtn.textContent = '⏸️';
+            muteBtn.textContent = '🔇';
+            volumeSlider.value = 0;
+          });
+        });
+      }
+    });
+
+    // Update play/pause button when video plays/pauses
+    video.addEventListener('play', () => {
+      playPauseBtn.textContent = '⏸️';
+    });
+
+    video.addEventListener('pause', () => {
+      playPauseBtn.textContent = '▶️';
+    });
 
     function toggleVideoPlay() {
       if (video.paused) {
-        video.play();
-        playPauseBtn.textContent = '⏸️';
+        video.play().then(() => {
+          playPauseBtn.textContent = '⏸️';
+        }).catch((error) => {
+          console.log('Play failed:', error);
+        });
       } else {
         video.pause();
         playPauseBtn.textContent = '▶️';
@@ -977,8 +909,10 @@
     function toggleMute() {
       if (video.muted) {
         video.muted = false;
-        muteBtn.textContent = video.volume > 0.5 ? '🔊' : '🔉';
-        volumeSlider.value = video.volume * 100;
+        const volume = Math.max(0.5, video.volume); // Set to at least 50% if unmuting
+        video.volume = volume;
+        volumeSlider.value = volume * 100;
+        muteBtn.textContent = volume > 0.5 ? '🔊' : '🔉';
       } else {
         video.muted = true;
         muteBtn.textContent = '🔇';
@@ -988,16 +922,13 @@
     function changeVolume() {
       const volume = volumeSlider.value / 100;
       video.volume = volume;
-      video.muted = false;
       
-      // Update mute button icon based on volume level
       if (volume === 0) {
-        muteBtn.textContent = '🔇';
         video.muted = true;
-      } else if (volume < 0.5) {
-        muteBtn.textContent = '🔉';
+        muteBtn.textContent = '🔇';
       } else {
-        muteBtn.textContent = '🔊';
+        video.muted = false;
+        muteBtn.textContent = volume < 0.5 ? '🔉' : '🔊';
       }
     }
 
@@ -1013,37 +944,54 @@
       }
     }
 
-    // Listen for fullscreen changes
+    // Event listeners
+    playPauseBtn.addEventListener('click', toggleVideoPlay);
+    muteBtn.addEventListener('click', toggleMute);
+    volumeSlider.addEventListener('input', changeVolume);
+    fullscreenBtn.addEventListener('click', toggleFullscreen);
+
+    // Add this to your fullscreen change listener
     document.addEventListener('fullscreenchange', () => {
-      if (!document.fullscreenElement) {
+      const controls = document.querySelector('.video-controls');
+      if (document.fullscreenElement) {
+        // In fullscreen, always show controls
+        controls.style.opacity = '1';
+        controls.style.pointerEvents = 'auto';
+        // Also make sure video isn't muted when entering fullscreen
+        video.muted = false;
+        muteBtn.textContent = '🔉';
+        volumeSlider.value = 50;
+        video.volume = 0.5;
+      } else {
         videoContainer.classList.remove('fullscreen');
+        // Return to normal controls behavior
+        controls.style.opacity = '0';
+        controls.style.pointerEvents = 'none';
       }
     });
 
-    // Update play/pause button when video ends
-    video.addEventListener('ended', () => {
-      playPauseBtn.textContent = '▶️';
-    });
-
-    // Update volume slider when volume changes programmatically
-    video.addEventListener('volumechange', () => {
-      if (!video.muted) {
-        volumeSlider.value = video.volume * 100;
+    // Also handle ESC key and other fullscreen exit methods
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && document.fullscreenElement) {
+        document.exitFullscreen();
       }
     });
 
-    // Show/hide controls on hover with better UX
+    // Replace your current mouseenter/mouseleave listeners with this:
     videoContainer.addEventListener('mouseenter', () => {
       clearTimeout(controlsTimeout);
       document.querySelector('.video-controls').style.opacity = '1';
       document.querySelector('.video-controls').style.pointerEvents = 'auto';
     });
-    
+
     videoContainer.addEventListener('mouseleave', () => {
-      controlsTimeout = setTimeout(() => {
-        document.querySelector('.video-controls').style.opacity = '0';
-        document.querySelector('.video-controls').style.pointerEvents = 'none';
-      }, 1000);
+      // Only hide controls if not in fullscreen mode
+      if (!document.fullscreenElement) {
+        controlsTimeout = setTimeout(() => {
+          document.querySelector('.video-controls').style.opacity = '0';
+          document.querySelector('.video-controls').style.pointerEvents = 'none';
+        }, 1000);
+      }
     });
 
     // Keep controls visible when hovering over them
@@ -1052,14 +1000,40 @@
     });
 
     document.querySelector('.video-controls').addEventListener('mouseleave', () => {
+      // Don't hide controls in fullscreen mode
+      if (document.fullscreenElement) {
+        return;
+      }
       controlsTimeout = setTimeout(() => {
         document.querySelector('.video-controls').style.opacity = '0';
         document.querySelector('.video-controls').style.pointerEvents = 'none';
       }, 1000);
     });
+
+    // Handle video ended
+    video.addEventListener('ended', () => {
+      playPauseBtn.textContent = '▶️';
+    });
+
+    // Smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
   </script>
 
 
+
+  <script src="https://vjs.zencdn.net/8.10.0/video.min.js"></script>
+  
   <script>
     // FAQ Toggle
     document.querySelectorAll('.faq-question').forEach((question) => {
